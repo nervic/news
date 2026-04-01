@@ -2,484 +2,909 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Your Daily Digest — 01 Apr 2026 · 21:51</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nervicev Dnevnik</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg:#0d0f0c; --surface:#161814; --surface2:#1e201c;
-  --border:#252720; --border2:#30332a;
-  --ink:#ddd8cc; --ink2:#9a9588; --ink3:#5a5750;
-  --accent:#c4a35a; --accent2:#7a9e5a; --col:880px;
+:root{
+  --bg:#0e0f0d;
+  --surface:#161714;
+  --surface2:#1c1e1a;
+  --border:#252720;
+  --border2:#2e312a;
+  --ink:#e2ddd4;
+  --ink2:#b0aa9e;
+  --ink3:#686560;
+  --accent:#c4a35a;
+  --max:740px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:'Libre Baskerville',Georgia,serif;font-size:16px;line-height:1.7;min-height:100vh}
-.masthead{border-bottom:1px solid var(--border2);padding:2.5rem 2rem 1.5rem;text-align:center;background:var(--surface);position:relative}
-.masthead::before{content:'';display:block;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);margin-bottom:2rem}
-.masthead h1{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2.4rem,7vw,4.2rem);letter-spacing:-0.01em;color:var(--ink);line-height:1}
-.masthead .tagline{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.25em;color:var(--accent);text-transform:uppercase;margin-top:.5rem}
-.masthead .dateline{font-style:italic;color:var(--ink3);font-size:.82rem;margin-top:.4rem}
-.masthead::after{content:'';display:block;height:1px;background:linear-gradient(90deg,transparent,var(--border2),transparent);margin-top:1.5rem}
-.top-nav{background:var(--bg);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;top:0;z-index:100;backdrop-filter:blur(8px)}
-.topic-links{display:flex;overflow-x:auto;scrollbar-width:none;gap:0}
-.topic-links a{color:var(--ink3);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;padding:.72rem .75rem;white-space:nowrap;transition:color .2s;border-bottom:2px solid transparent}
-.topic-links a:hover{color:var(--accent);border-bottom-color:var(--accent)}
-.settings-btn{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);background:none;border:1px solid var(--border2);padding:.32rem .75rem;cursor:pointer;border-radius:3px;white-space:nowrap;transition:all .2s;flex-shrink:0}
-.settings-btn:hover{color:var(--accent);border-color:var(--accent)}
-.wrapper{max-width:var(--col);margin:0 auto;padding:0 1.5rem 5rem}
-.topic-section{margin-top:3.5rem;animation:fadeUp .5s ease both}
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.topic-header{display:flex;align-items:baseline;gap:.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border2);margin-bottom:1.5rem}
-.topic-icon{font-size:1.1rem;line-height:1}
-.topic-title{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
-.topic-count{font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--ink3);margin-left:auto;letter-spacing:.1em}
-.stories-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--border);border-radius:4px;overflow:hidden}
-.story{padding:1.2rem 1.4rem;border-right:1px solid var(--border);border-bottom:1px solid var(--border);transition:background .2s}
-.story:hover{background:var(--surface)}
-.story:nth-child(2n){border-right:none}
-.story:nth-last-child(-n+2){border-bottom:none}
-.lead-story{grid-column:1/-1;border-right:none;background:var(--surface);padding:1.6rem}
-.lead-story .story-headline{font-size:1.22rem}
-.lead-story .story-summary{font-size:.94rem;max-width:72ch}
-.story-source{font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent2)}
-.story-meta-top{margin-bottom:.35rem}
-.story-headline{font-family:'Playfair Display',serif;font-weight:700;font-size:.97rem;line-height:1.35;margin-bottom:.45rem}
-.story-headline a{color:var(--ink);text-decoration:none;transition:color .15s}
-.story-headline a:hover{color:var(--accent)}
-.story-summary{font-size:.84rem;color:var(--ink2);line-height:1.65;margin-bottom:.65rem;font-style:italic}
-.story-readmore{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s}
-.story-readmore:hover{border-bottom-color:var(--accent)}
-.archive-section{margin-top:4rem;padding-top:2rem;border-top:1px solid var(--border2)}
-.archive-title{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-bottom:1rem}
-.archive-list{display:flex;flex-wrap:wrap;gap:8px}
-.archive-item{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.08em;padding:.3rem .8rem;border:1px solid var(--border2);border-radius:3px;color:var(--ink3);text-decoration:none;transition:all .2s}
-.archive-item:hover{color:var(--accent);border-color:var(--accent)}
-footer{text-align:center;padding:2.5rem 2rem;border-top:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink3);margin-top:4rem}
-footer a{color:var(--ink3);text-decoration:none}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Source Serif 4',Georgia,serif;
+  font-size:18px;
+  line-height:1.75;
+  min-height:100vh;
+}
+
+/* ── Masthead ── */
+.mast{
+  background:var(--surface);
+  border-bottom:1px solid var(--border2);
+  padding:3rem 2rem 2rem;
+  text-align:center;
+}
+.mast::before{
+  content:'';
+  display:block;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  margin-bottom:2.5rem;
+}
+.mast h1{
+  font-family:'Playfair Display',serif;
+  font-weight:900;
+  font-size:clamp(2.6rem,8vw,4.8rem);
+  letter-spacing:-0.02em;
+  line-height:1;
+  color:var(--ink);
+}
+.mast .sub{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.65rem;
+  letter-spacing:0.25em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-top:0.6rem;
+}
+.mast .date{
+  font-size:0.95rem;
+  font-style:italic;
+  color:var(--ink3);
+  margin-top:0.4rem;
+}
+
+/* ── Sticky nav ── */
+.nav{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(14,15,13,0.95);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 1.5rem;
+  gap:1rem;
+}
+.nav-links{
+  display:flex;
+  overflow-x:auto;
+  scrollbar-width:none;
+  gap:0;
+  flex:1;
+}
+.nav-links a{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.6rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--ink3);
+  text-decoration:none;
+  padding:0.8rem 0.7rem;
+  white-space:nowrap;
+  border-bottom:2px solid transparent;
+  transition:color 0.2s,border-color 0.2s;
+  display:flex;
+  align-items:center;
+  gap:0.3rem;
+}
+.nav-links a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.nav-links .ni{font-size:0.85rem}
+.src-btn{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.6rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--ink3);
+  background:none;
+  border:1px solid var(--border2);
+  padding:0.32rem 0.7rem;
+  border-radius:3px;
+  cursor:pointer;
+  white-space:nowrap;
+  flex-shrink:0;
+  transition:all 0.2s;
+}
+.src-btn:hover{color:var(--accent);border-color:var(--accent)}
+
+/* ── Main content ── */
+.wrap{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:0 1.5rem 6rem;
+}
+
+/* ── Topic section ── */
+.topic{
+  margin-top:4rem;
+  animation:fadeUp 0.5s ease both;
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:none}
+}
+.topic-head{
+  display:flex;
+  align-items:center;
+  gap:0.6rem;
+  padding-bottom:0.75rem;
+  border-bottom:3px solid var(--tc,var(--accent));
+  margin-bottom:2rem;
+}
+.topic-icon{font-size:1.2rem;line-height:1}
+.topic-name{
+  font-family:'JetBrains Mono',monospace;
+  font-weight:500;
+  font-size:0.72rem;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--tc,var(--accent));
+}
+.topic-count{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.6rem;
+  color:var(--ink3);
+  margin-left:auto;
+  letter-spacing:0.1em;
+}
+
+/* ── Cards ── */
+.cards{display:flex;flex-direction:column;gap:0}
+
+.card{
+  padding:1.8rem 0;
+  border-bottom:1px solid var(--border);
+}
+.card:last-child{border-bottom:none}
+
+.card.lead{
+  padding:2rem 1.75rem;
+  background:var(--surface);
+  border-radius:6px;
+  border:none;
+  margin-bottom:0.5rem;
+}
+.card.lead .card-title{font-size:1.55rem;line-height:1.3}
+.card.lead .card-summary{font-size:1.05rem}
+
+.card-source{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.62rem;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:var(--tc,var(--accent));
+  opacity:0.8;
+  margin-bottom:0.5rem;
+}
+.card-title{
+  font-family:'Playfair Display',serif;
+  font-weight:700;
+  font-size:1.25rem;
+  line-height:1.35;
+  margin-bottom:0.65rem;
+}
+.card-title a{
+  color:var(--ink);
+  text-decoration:none;
+  transition:color 0.15s;
+}
+.card-title a:hover{color:var(--tc,var(--accent))}
+.card-summary{
+  font-size:1rem;
+  color:var(--ink2);
+  line-height:1.7;
+  margin-bottom:0.75rem;
+}
+.card-read{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.62rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--tc,var(--accent));
+  text-decoration:none;
+  opacity:0.75;
+  transition:opacity 0.15s;
+}
+.card-read:hover{opacity:1}
+
+/* ── Archive ── */
+.archive{
+  margin-top:5rem;
+  padding-top:2.5rem;
+  border-top:1px solid var(--border2);
+}
+.arc-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.62rem;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--ink3);
+  margin-bottom:1rem;
+}
+.arc-links{display:flex;flex-wrap:wrap;gap:8px}
+.arc-link{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.62rem;
+  letter-spacing:0.08em;
+  padding:0.3rem 0.85rem;
+  border:1px solid var(--border2);
+  border-radius:3px;
+  color:var(--ink3);
+  text-decoration:none;
+  transition:all 0.2s;
+}
+.arc-link:hover{color:var(--accent);border-color:var(--accent)}
+
+/* ── Footer ── */
+footer{
+  text-align:center;
+  padding:2.5rem 2rem;
+  border-top:1px solid var(--border);
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.6rem;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:var(--ink3);
+  margin-top:4rem;
+}
+footer a{color:var(--ink3);text-decoration:none;transition:color 0.2s}
 footer a:hover{color:var(--accent)}
-.settings-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:200;align-items:flex-start;justify-content:flex-end}
-.settings-overlay.open{display:flex}
-.settings-panel{background:var(--surface);border-left:1px solid var(--border2);width:min(480px,100vw);height:100vh;overflow-y:auto;padding:2rem;animation:slideIn .25s ease}
+
+/* ── Settings panel ── */
+.overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.82);
+  z-index:200;
+  justify-content:flex-end;
+}
+.overlay.open{display:flex}
+.panel{
+  background:var(--surface);
+  border-left:1px solid var(--border2);
+  width:min(500px,100vw);
+  height:100vh;
+  overflow-y:auto;
+  padding:2rem;
+  animation:slideIn 0.25s ease;
+}
 @keyframes slideIn{from{transform:translateX(100%)}to{transform:none}}
-.panel-heading{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;display:flex;justify-content:space-between;align-items:center}
-.settings-close{background:none;border:none;color:var(--ink3);cursor:pointer;font-size:1.2rem;line-height:1;padding:0;transition:color .2s}
-.settings-close:hover{color:var(--ink)}
-.sec-label{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink3);border-bottom:1px solid var(--border);padding-bottom:.4rem;margin:1.5rem 0 .8rem}
-.source-item{display:flex;align-items:center;gap:10px;padding:.45rem 0;border-bottom:1px solid var(--border)}
-.source-item:last-child{border-bottom:none}
-.source-item input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:pointer;flex-shrink:0}
-.source-label{flex:1;font-size:.82rem;color:var(--ink2)}
-.source-topic{font-family:'JetBrains Mono',monospace;font-size:.52rem;letter-spacing:.08em;color:var(--ink3);text-transform:uppercase;flex-shrink:0}
-.add-form{margin-top:.8rem;display:flex;flex-direction:column;gap:8px}
-.add-form input,.add-form select{background:var(--bg);border:1px solid var(--border2);border-radius:3px;color:var(--ink);font-family:'JetBrains Mono',monospace;font-size:.72rem;padding:.48rem .72rem;width:100%;outline:none;transition:border-color .2s}
+.panel-head{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.68rem;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:1.5rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.p-close{
+  background:none;border:none;color:var(--ink3);
+  cursor:pointer;font-size:1.3rem;line-height:1;
+  padding:0;transition:color 0.2s;
+}
+.p-close:hover{color:var(--ink)}
+.sec{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.58rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--ink3);
+  border-bottom:1px solid var(--border);
+  padding-bottom:0.4rem;margin:1.5rem 0 0.8rem;
+}
+.src-row{
+  display:flex;align-items:center;gap:10px;
+  padding:0.5rem 0;border-bottom:1px solid var(--border);
+}
+.src-row:last-child{border-bottom:none}
+.src-row input[type=checkbox]{
+  width:15px;height:15px;
+  accent-color:var(--accent);cursor:pointer;flex-shrink:0;
+}
+.src-name{flex:1;font-size:0.9rem;color:var(--ink2);line-height:1.3}
+.add-form{display:flex;flex-direction:column;gap:8px;margin-top:0.5rem}
+.add-form input,.add-form select{
+  background:var(--bg);border:1px solid var(--border2);
+  border-radius:3px;color:var(--ink);
+  font-family:'JetBrains Mono',monospace;font-size:0.75rem;
+  padding:0.5rem 0.75rem;width:100%;outline:none;
+  transition:border-color 0.2s;
+}
 .add-form input:focus,.add-form select:focus{border-color:var(--accent)}
 .add-form input::placeholder{color:var(--ink3)}
 .add-form select option{background:var(--surface)}
-.btn-row{display:flex;gap:8px;margin-top:.5rem;flex-wrap:wrap}
-.btn{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:.45rem .9rem;border-radius:3px;cursor:pointer;border:1px solid var(--border2);background:none;color:var(--ink2);transition:all .2s}
+.btn-row{display:flex;gap:8px;margin-top:0.6rem;flex-wrap:wrap}
+.btn{
+  font-family:'JetBrains Mono',monospace;font-size:0.62rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+  padding:0.45rem 0.9rem;border-radius:3px;cursor:pointer;
+  border:1px solid var(--border2);background:none;color:var(--ink2);
+  transition:all 0.2s;
+}
 .btn:hover{border-color:var(--accent);color:var(--accent)}
-.btn-primary{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:500}
-.btn-primary:hover{background:#d4b06a;border-color:#d4b06a;color:var(--bg)}
-.notice{font-size:.75rem;color:var(--ink3);font-style:italic;margin-top:1rem;line-height:1.55;padding:.72rem;border:1px solid var(--border);border-radius:3px}
+.btn-p{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:500}
+.btn-p:hover{background:#d4b06a;border-color:#d4b06a;color:var(--bg)}
+.notice{
+  font-size:0.78rem;color:var(--ink3);font-style:italic;
+  margin-top:1rem;line-height:1.6;padding:0.75rem;
+  border:1px solid var(--border);border-radius:3px;
+}
 .notice strong{color:var(--ink2);font-style:normal}
-.notice code{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--accent)}
-.export-area{margin-top:.8rem;background:var(--bg);border:1px solid var(--border2);border-radius:3px;padding:.72rem;font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--ink2);white-space:pre;overflow-x:auto;max-height:200px;overflow-y:auto;display:none}
-@media(max-width:640px){
-  .stories-grid{grid-template-columns:1fr}
-  .lead-story{grid-column:1}
-  .story{border-right:none}
-  .masthead h1{font-size:2.2rem}
+.notice code{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--accent)}
+.exp-pre{
+  margin-top:0.75rem;background:var(--bg);
+  border:1px solid var(--border2);border-radius:3px;
+  padding:0.75rem;font-family:'JetBrains Mono',monospace;
+  font-size:0.62rem;color:var(--ink2);white-space:pre;
+  overflow:auto;max-height:220px;display:none;
+}
+
+@media(max-width:600px){
+  .mast h1{font-size:2.4rem}
+  .card.lead{padding:1.4rem}
+  .card.lead .card-title{font-size:1.3rem}
+  .wrap{padding:0 1rem 4rem}
 }
 </style>
 </head>
 <body>
-<div class="masthead">
-  <h1>Your Daily Digest</h1>
-  <div class="tagline">Personal · Curated · Unfiltered</div>
-  <div class="dateline">01 Apr 2026 · 21:51 &nbsp;·&nbsp; 49 stories</div>
+
+<div class="mast">
+  <h1>Nervicev Dnevnik</h1>
+  <div class="date">Wednesday, 01 April 2026 · 22:09 &nbsp;·&nbsp; 54 stories</div>
 </div>
-<nav class="top-nav">
-  <div class="topic-links"><a href="#football">⚽ Football</a>
-<a href="#ai-tech">🤖 AI & Tech</a>
-<a href="#space">🚀 Space</a>
-<a href="#video-gaming">🎮 Video Gaming</a>
-<a href="#global-finance">📈 Global Finance</a>
-<a href="#cryptocurrencies">₿ Cryptocurrencies</a>
-<a href="#balkan-politics">🗺️ Balkan Politics</a></div>
-  <button class="settings-btn" onclick="openSettings()">⚙ Sources</button>
+
+<nav class="nav">
+  <div class="nav-links"><a href="#football"><span class="ni">⚽</span>Football</a>
+<a href="#ai-tech"><span class="ni">🤖</span>AI & Tech</a>
+<a href="#space"><span class="ni">🚀</span>Space</a>
+<a href="#video-gaming"><span class="ni">🎮</span>Video Gaming</a>
+<a href="#global-finance"><span class="ni">📈</span>Global Finance</a>
+<a href="#cryptocurrencies"><span class="ni">₿</span>Cryptocurrencies</a>
+<a href="#balkan-politics"><span class="ni">🗺️</span>Balkan Politics</a>
+<a href="#ni-news"><span class="ni">🏙️</span>Niš News</a></div>
+  <button class="src-btn" onclick="openSettings()">⚙ Sources</button>
 </nav>
-<div class="wrapper">
+
+<div class="wrap">
   
-      <section class="topic-section" id="football" style="animation-delay:0.00s">
-        <header class="topic-header">
-          <span class="topic-icon">⚽</span>
-          <h2 class="topic-title">Football</h2>
-          <span class="topic-count">8 stories</span>
-        </header>
-        <div class="stories-grid">
-        <article class="story lead-story">
-          <div class="story-meta-top"><span class="story-source">skysports.com</span></div>
-          <h3 class="story-headline"><a href="https://www.skysports.com/golf/news/12040/13527026/tiger-woods-will-not-captain-us-ryder-cup-team-for-2027-tournament-in-ireland-after-stepping-away-from-golf-after-car-crash" target="_blank" rel="noopener">Woods will not captain US team at 2027 Ryder Cup</a></h3>
-          <p class="story-summary">Tiger Woods has told the PGA of America he will not captain the US Ryder Cup team in 2027, following his decision to take a break from golf after his car crash.</p>
-          <a class="story-readmore" href="https://www.skysports.com/golf/news/12040/13527026/tiger-woods-will-not-captain-us-ryder-cup-team-for-2027-tournament-in-ireland-after-stepping-away-from-golf-after-car-crash" target="_blank" rel="noopener">Continue reading →</a>
+    <section class="topic" id="football" style="--tc:#5a9e6e;animation-delay:0.00s">
+      <header class="topic-head">
+        <span class="topic-icon">⚽</span>
+        <span class="topic-name">Football</span>
+        <span class="topic-count">8 stories</span>
+      </header>
+      <div class="cards">
+        <article class="card lead">
+          <div class="card-source">skysports.com</div>
+          <h3 class="card-title">
+            <a href="https://www.skysports.com/golf/news/12040/13527026/tiger-woods-will-not-captain-us-ryder-cup-team-for-2027-tournament-in-ireland-after-stepping-away-from-golf-after-car-crash" target="_blank" rel="noopener">Woods will not captain US team at 2027 Ryder Cup</a>
+          </h3>
+          <p class="card-summary">Tiger Woods has told the PGA of America he will not captain the US Ryder Cup team in 2027, following his decision to take a break from golf after his car crash.</p>
+          <a class="card-read" href="https://www.skysports.com/golf/news/12040/13527026/tiger-woods-will-not-captain-us-ryder-cup-team-for-2027-tournament-in-ireland-after-stepping-away-from-golf-after-car-crash" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">skysports.com</span></div>
-          <h3 class="story-headline"><a href="https://www.skysports.com/football/chelsea-women-vs-arsenal-women/report/551341" target="_blank" rel="noopener">Nusken goal not enough as Bompastor sent off in Chelsea's WCL exit to Arsenal</a></h3>
-          <p class="story-summary">A dramatic final 15 minutes saw Chelsea boss Sonia Bompastor sent off after Sjoeke Nusken had given the Blues late hope of a Women's Champions League quarter-final second-leg comeback against Arsenal, but the Gunners wer…</p>
-          <a class="story-readmore" href="https://www.skysports.com/football/chelsea-women-vs-arsenal-women/report/551341" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">skysports.com</div>
+          <h3 class="card-title">
+            <a href="https://www.skysports.com/football/chelsea-women-vs-arsenal-women/report/551341" target="_blank" rel="noopener">Nusken goal not enough as Bompastor sent off in Chelsea's WCL exit to Arsenal</a>
+          </h3>
+          <p class="card-summary">A dramatic final 15 minutes saw Chelsea boss Sonia Bompastor sent off after Sjoeke Nusken had given the Blues late hope of a Women's Champions League quarter-final second-leg comeback against Arsenal, but the Gunners were 3-2 winners on aggregate.</p>
+          <a class="card-read" href="https://www.skysports.com/football/chelsea-women-vs-arsenal-women/report/551341" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">skysports.com</span></div>
-          <h3 class="story-headline"><a href="https://www.skysports.com/rugby-league/news/12040/13526849/england-rugby-league-kevin-sinfield-on-interview-panel-to-advise-on-new-head-coach-from-world-class-applicants" target="_blank" rel="noopener">Sinfield on panel to advise on new England rugby league head coach</a></h3>
-          <p class="story-summary">Kevin Sinfield is among the interview panel to advise on the next England head coach to replace Shaun Wane, who stepped down in January.</p>
-          <a class="story-readmore" href="https://www.skysports.com/rugby-league/news/12040/13526849/england-rugby-league-kevin-sinfield-on-interview-panel-to-advise-on-new-head-coach-from-world-class-applicants" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">skysports.com</div>
+          <h3 class="card-title">
+            <a href="https://www.skysports.com/rugby-league/news/12040/13526849/england-rugby-league-kevin-sinfield-on-interview-panel-to-advise-on-new-head-coach-from-world-class-applicants" target="_blank" rel="noopener">Sinfield on panel to advise on new England rugby league head coach</a>
+          </h3>
+          <p class="card-summary">Kevin Sinfield is among the interview panel to advise on the next England head coach to replace Shaun Wane, who stepped down in January.</p>
+          <a class="card-read" href="https://www.skysports.com/rugby-league/news/12040/13526849/england-rugby-league-kevin-sinfield-on-interview-panel-to-advise-on-new-head-coach-from-world-class-applicants" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">skysports.com</span></div>
-          <h3 class="story-headline"><a href="https://www.skysports.com/darts/news/12040/13526928/luke-littler-world-no-1-back-where-i-should-belong-as-he-seeks-fourth-premier-league-darts-nightly-win-in-five-weeks-in-manchester" target="_blank" rel="noopener">'I'm back where I should belong' - Littler eyes fourth nightly win in Manchester</a></h3>
-          <p class="story-summary">Luke Littler has warned his rivals he is "back where I should belong" at the top of the Premier League Darts table as he seeks a fourth nightly victory in the space of five weeks in Manchester.</p>
-          <a class="story-readmore" href="https://www.skysports.com/darts/news/12040/13526928/luke-littler-world-no-1-back-where-i-should-belong-as-he-seeks-fourth-premier-league-darts-nightly-win-in-five-weeks-in-manchester" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">skysports.com</div>
+          <h3 class="card-title">
+            <a href="https://www.skysports.com/darts/news/12040/13526928/luke-littler-world-no-1-back-where-i-should-belong-as-he-seeks-fourth-premier-league-darts-nightly-win-in-five-weeks-in-manchester" target="_blank" rel="noopener">'I'm back where I should belong' - Littler eyes fourth nightly win in Manchester</a>
+          </h3>
+          <p class="card-summary">Luke Littler has warned his rivals he is "back where I should belong" at the top of the Premier League Darts table as he seeks a fourth nightly victory in the space of five weeks in Manchester.</p>
+          <a class="card-read" href="https://www.skysports.com/darts/news/12040/13526928/luke-littler-world-no-1-back-where-i-should-belong-as-he-seeks-fourth-premier-league-darts-nightly-win-in-five-weeks-in-manchester" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">skysports.com</span></div>
-          <h3 class="story-headline"><a href="https://www.skysports.com/boxing/news/12040/13527021/moses-itauma-oleksandr-usyk-tyson-fury-and-anthony-joshua-should-want-to-fight-me-but-they-dont" target="_blank" rel="noopener">Itauma: Usyk, Fury & AJ should want to fight me, but they don't</a></h3>
-          <p class="story-summary">Moses Itauma delivered a message when he smashed aside Jermaine Franklin in five rounds he's ready for the best in the heavyweight division.</p>
-          <a class="story-readmore" href="https://www.skysports.com/boxing/news/12040/13527021/moses-itauma-oleksandr-usyk-tyson-fury-and-anthony-joshua-should-want-to-fight-me-but-they-dont" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">skysports.com</div>
+          <h3 class="card-title">
+            <a href="https://www.skysports.com/boxing/news/12040/13527021/moses-itauma-oleksandr-usyk-tyson-fury-and-anthony-joshua-should-want-to-fight-me-but-they-dont" target="_blank" rel="noopener">Itauma: Usyk, Fury & AJ should want to fight me, but they don't</a>
+          </h3>
+          <p class="card-summary">Moses Itauma delivered a message when he smashed aside Jermaine Franklin in five rounds he's ready for the best in the heavyweight division.</p>
+          <a class="card-read" href="https://www.skysports.com/boxing/news/12040/13527021/moses-itauma-oleksandr-usyk-tyson-fury-and-anthony-joshua-should-want-to-fight-me-but-they-dont" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">skysports.com</span></div>
-          <h3 class="story-headline"><a href="https://www.skysports.com/watch/video/5446861/westwood-focused-on-uspga-championship" target="_blank" rel="noopener">Westwood focused on USPGA Championship</a></h3>
-          <p class="story-summary">Lee Westwood says he's pleased with his performance at the Open Championship despite missing out on the play-off.</p>
-          <a class="story-readmore" href="https://www.skysports.com/watch/video/5446861/westwood-focused-on-uspga-championship" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">skysports.com</div>
+          <h3 class="card-title">
+            <a href="https://www.skysports.com/watch/video/5446861/westwood-focused-on-uspga-championship" target="_blank" rel="noopener">Westwood focused on USPGA Championship</a>
+          </h3>
+          <p class="card-summary">Lee Westwood says he's pleased with his performance at the Open Championship despite missing out on the play-off.</p>
+          <a class="card-read" href="https://www.skysports.com/watch/video/5446861/westwood-focused-on-uspga-championship" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">skysports.com</span></div>
-          <h3 class="story-headline"><a href="https://www.skysports.com/watch/video/5446525/ashes-golf-day-cook" target="_blank" rel="noopener">Ashes Golf Day - Cook</a></h3>
-          <p class="story-summary">England batsman Alistair Cook reflects on the second Test and looks ahead to the rest of the Ashes series.</p>
-          <a class="story-readmore" href="https://www.skysports.com/watch/video/5446525/ashes-golf-day-cook" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">skysports.com</div>
+          <h3 class="card-title">
+            <a href="https://www.skysports.com/watch/video/5446525/ashes-golf-day-cook" target="_blank" rel="noopener">Ashes Golf Day - Cook</a>
+          </h3>
+          <p class="card-summary">England batsman Alistair Cook reflects on the second Test and looks ahead to the rest of the Ashes series.</p>
+          <a class="card-read" href="https://www.skysports.com/watch/video/5446525/ashes-golf-day-cook" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">skysports.com</span></div>
-          <h3 class="story-headline"><a href="https://www.skysports.com/watch/video/5446528/ashes-golf-day-warne" target="_blank" rel="noopener">Ashes Golf Day - Warne</a></h3>
-          <p class="story-summary">Sky Sports pundit Shane Warne reflects on the second Test and looks ahead to the rest of the Ashes series.</p>
-          <a class="story-readmore" href="https://www.skysports.com/watch/video/5446528/ashes-golf-day-warne" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">skysports.com</div>
+          <h3 class="card-title">
+            <a href="https://www.skysports.com/watch/video/5446528/ashes-golf-day-warne" target="_blank" rel="noopener">Ashes Golf Day - Warne</a>
+          </h3>
+          <p class="card-summary">Sky Sports pundit Shane Warne reflects on the second Test and looks ahead to the rest of the Ashes series.</p>
+          <a class="card-read" href="https://www.skysports.com/watch/video/5446528/ashes-golf-day-warne" target="_blank" rel="noopener">Read full story →</a>
         </article></div>
-      </section>
-      <section class="topic-section" id="ai-tech" style="animation-delay:0.06s">
-        <header class="topic-header">
-          <span class="topic-icon">🤖</span>
-          <h2 class="topic-title">AI & Tech</h2>
-          <span class="topic-count">8 stories</span>
-        </header>
-        <div class="stories-grid">
-        <article class="story lead-story">
-          <div class="story-meta-top"><span class="story-source">techcrunch.com</span></div>
-          <h3 class="story-headline"><a href="https://techcrunch.com/2026/04/01/the-reputation-of-troubled-yc-startup-delve-has-gotten-even-worse/" target="_blank" rel="noopener">The reputation of troubled YC startup Delve has gotten even worse</a></h3>
-          <p class="story-summary">Delve faces new allegations that it violated the open source license of its customer, Sim.ai, by taking the customers's tool and passing it off as its own.</p>
-          <a class="story-readmore" href="https://techcrunch.com/2026/04/01/the-reputation-of-troubled-yc-startup-delve-has-gotten-even-worse/" target="_blank" rel="noopener">Continue reading →</a>
+    </section>
+    <section class="topic" id="ai-tech" style="--tc:#6e8ebe;animation-delay:0.07s">
+      <header class="topic-head">
+        <span class="topic-icon">🤖</span>
+        <span class="topic-name">AI & Tech</span>
+        <span class="topic-count">8 stories</span>
+      </header>
+      <div class="cards">
+        <article class="card lead">
+          <div class="card-source">techcrunch.com</div>
+          <h3 class="card-title">
+            <a href="https://techcrunch.com/2026/04/01/the-reputation-of-troubled-yc-startup-delve-has-gotten-even-worse/" target="_blank" rel="noopener">The reputation of troubled YC startup Delve has gotten even worse</a>
+          </h3>
+          <p class="card-summary">Delve faces new allegations that it violated the open source license of its customer, Sim.ai, by taking the customers's tool and passing it off as its own.</p>
+          <a class="card-read" href="https://techcrunch.com/2026/04/01/the-reputation-of-troubled-yc-startup-delve-has-gotten-even-worse/" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">techcrunch.com</span></div>
-          <h3 class="story-headline"><a href="https://techcrunch.com/2026/04/01/system-failure-paralyzes-baidu-robotaxis-in-china/" target="_blank" rel="noopener">‘System failure’ paralyzes Baidu robotaxis in China</a></h3>
-          <p class="story-summary">Passengers in Baidu's robotaxis were trapped for up to two hours.</p>
-          <a class="story-readmore" href="https://techcrunch.com/2026/04/01/system-failure-paralyzes-baidu-robotaxis-in-china/" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">techcrunch.com</div>
+          <h3 class="card-title">
+            <a href="https://techcrunch.com/2026/04/01/system-failure-paralyzes-baidu-robotaxis-in-china/" target="_blank" rel="noopener">‘System failure’ paralyzes Baidu robotaxis in China</a>
+          </h3>
+          <p class="card-summary">Passengers in Baidu's robotaxis were trapped for up to two hours.</p>
+          <a class="card-read" href="https://techcrunch.com/2026/04/01/system-failure-paralyzes-baidu-robotaxis-in-china/" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">techcrunch.com</span></div>
-          <h3 class="story-headline"><a href="https://techcrunch.com/2026/04/01/a-new-dating-app-sonder-has-a-deliberately-annoying-sign-up-process-and-its-working/" target="_blank" rel="noopener">A new dating app, Sonder, has a deliberately annoying sign-up process (and it’s working)</a></h3>
-          <p class="story-summary">Sonder profiles are completely unstructured, encouraging users to build something that looks like a mood board or a digital collage. Think MySpace rather than LinkedIn.</p>
-          <a class="story-readmore" href="https://techcrunch.com/2026/04/01/a-new-dating-app-sonder-has-a-deliberately-annoying-sign-up-process-and-its-working/" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">techcrunch.com</div>
+          <h3 class="card-title">
+            <a href="https://techcrunch.com/2026/04/01/a-new-dating-app-sonder-has-a-deliberately-annoying-sign-up-process-and-its-working/" target="_blank" rel="noopener">A new dating app, Sonder, has a deliberately annoying sign-up process (and it’s working)</a>
+          </h3>
+          <p class="card-summary">Sonder profiles are completely unstructured, encouraging users to build something that looks like a mood board or a digital collage. Think MySpace rather than LinkedIn.</p>
+          <a class="card-read" href="https://techcrunch.com/2026/04/01/a-new-dating-app-sonder-has-a-deliberately-annoying-sign-up-process-and-its-working/" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">techcrunch.com</span></div>
-          <h3 class="story-headline"><a href="https://techcrunch.com/2026/04/01/startup-funding-shatters-all-records-in-q1/" target="_blank" rel="noopener">Startup funding shatters all records in Q1</a></h3>
-          <p class="story-summary">The record quarterly fundraise largely fueled four mega-deals into OpenAI, Anthropic, xAI, and Waymo. But it also indicates a generally hot market.</p>
-          <a class="story-readmore" href="https://techcrunch.com/2026/04/01/startup-funding-shatters-all-records-in-q1/" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">techcrunch.com</div>
+          <h3 class="card-title">
+            <a href="https://techcrunch.com/2026/04/01/startup-funding-shatters-all-records-in-q1/" target="_blank" rel="noopener">Startup funding shatters all records in Q1</a>
+          </h3>
+          <p class="card-summary">The record quarterly fundraise largely fueled four mega-deals into OpenAI, Anthropic, xAI, and Waymo. But it also indicates a generally hot market.</p>
+          <a class="card-read" href="https://techcrunch.com/2026/04/01/startup-funding-shatters-all-records-in-q1/" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">techcrunch.com</span></div>
-          <h3 class="story-headline"><a href="https://techcrunch.com/2026/04/01/apple-releases-security-fix-for-older-iphones-and-ipads-to-protect-against-darksword-attacks/" target="_blank" rel="noopener">Apple releases security fix for older iPhones and iPads to protect against DarkSword attacks</a></h3>
-          <p class="story-summary">The security update protects a raft of older iPhones and iPads from attacks linked to leaked hacking tools called DarkSword.</p>
-          <a class="story-readmore" href="https://techcrunch.com/2026/04/01/apple-releases-security-fix-for-older-iphones-and-ipads-to-protect-against-darksword-attacks/" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">techcrunch.com</div>
+          <h3 class="card-title">
+            <a href="https://techcrunch.com/2026/04/01/apple-releases-security-fix-for-older-iphones-and-ipads-to-protect-against-darksword-attacks/" target="_blank" rel="noopener">Apple releases security fix for older iPhones and iPads to protect against DarkSword attacks</a>
+          </h3>
+          <p class="card-summary">The security update protects a raft of older iPhones and iPads from attacks linked to leaked hacking tools called DarkSword.</p>
+          <a class="card-read" href="https://techcrunch.com/2026/04/01/apple-releases-security-fix-for-older-iphones-and-ipads-to-protect-against-darksword-attacks/" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">arstechnica.com</span></div>
-          <h3 class="story-headline"><a href="https://arstechnica.com/gaming/2026/04/nvidias-new-app-lets-you-precompile-gaming-shaders-during-machine-idle-time/" target="_blank" rel="noopener">Nvidia rolls out its fix for PC gaming's "compiling shaders" wait times</a></h3>
-          <p class="story-summary">PC gamers who are tired of waiting for their games to "compile shaders" during some load times may want to dig into the latest beta version of the Nvidia App . Alongside new DLSS 4.5 Multi Frame Generation features, the …</p>
-          <a class="story-readmore" href="https://arstechnica.com/gaming/2026/04/nvidias-new-app-lets-you-precompile-gaming-shaders-during-machine-idle-time/" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">arstechnica.com</div>
+          <h3 class="card-title">
+            <a href="https://arstechnica.com/gaming/2026/04/nvidias-new-app-lets-you-precompile-gaming-shaders-during-machine-idle-time/" target="_blank" rel="noopener">Nvidia rolls out its fix for PC gaming's "compiling shaders" wait times</a>
+          </h3>
+          <p class="card-summary">PC gamers who are tired of waiting for their games to "compile shaders" during some load times may want to dig into the latest beta version of the Nvidia App . Alongside new DLSS 4.5 Multi Frame Generation features, the app includes the beta rollout of a featu…</p>
+          <a class="card-read" href="https://arstechnica.com/gaming/2026/04/nvidias-new-app-lets-you-precompile-gaming-shaders-during-machine-idle-time/" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">arstechnica.com</span></div>
-          <h3 class="story-headline"><a href="https://arstechnica.com/ai/2026/04/heres-what-that-claude-code-source-leak-reveals-about-anthropics-plans/" target="_blank" rel="noopener">Here's what that Claude Code source leak reveals about Anthropic's plans</a></h3>
-          <p class="story-summary">Yesterday's surprise leak of the source code for Anthropic's Claude Code revealed a lot about the vibe-coding scaffolding the company has built around its proprietary Claude model. But observers digging through over 512,…</p>
-          <a class="story-readmore" href="https://arstechnica.com/ai/2026/04/heres-what-that-claude-code-source-leak-reveals-about-anthropics-plans/" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">arstechnica.com</div>
+          <h3 class="card-title">
+            <a href="https://arstechnica.com/ai/2026/04/heres-what-that-claude-code-source-leak-reveals-about-anthropics-plans/" target="_blank" rel="noopener">Here's what that Claude Code source leak reveals about Anthropic's plans</a>
+          </h3>
+          <p class="card-summary">Yesterday's surprise leak of the source code for Anthropic's Claude Code revealed a lot about the vibe-coding scaffolding the company has built around its proprietary Claude model. But observers digging through over 512,000 lines of code across more than 2,000…</p>
+          <a class="card-read" href="https://arstechnica.com/ai/2026/04/heres-what-that-claude-code-source-leak-reveals-about-anthropics-plans/" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">arstechnica.com</span></div>
-          <h3 class="story-headline"><a href="https://arstechnica.com/science/2026/04/research-roundup-7-cool-science-stories-we-almost-missed-3/" target="_blank" rel="noopener">Research roundup: 7 cool science stories we almost missed</a></h3>
-          <p class="story-summary">It’s a regrettable reality that there is never enough time to cover all the interesting scientific stories we come across. So every month, we highlight a handful of the best stories that nearly slipped through the cracks…</p>
-          <a class="story-readmore" href="https://arstechnica.com/science/2026/04/research-roundup-7-cool-science-stories-we-almost-missed-3/" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">arstechnica.com</div>
+          <h3 class="card-title">
+            <a href="https://arstechnica.com/science/2026/04/research-roundup-7-cool-science-stories-we-almost-missed-3/" target="_blank" rel="noopener">Research roundup: 7 cool science stories we almost missed</a>
+          </h3>
+          <p class="card-summary">It’s a regrettable reality that there is never enough time to cover all the interesting scientific stories we come across. So every month, we highlight a handful of the best stories that nearly slipped through the cracks. March's list includes puzzle-solving r…</p>
+          <a class="card-read" href="https://arstechnica.com/science/2026/04/research-roundup-7-cool-science-stories-we-almost-missed-3/" target="_blank" rel="noopener">Read full story →</a>
         </article></div>
-      </section>
-      <section class="topic-section" id="space" style="animation-delay:0.12s">
-        <header class="topic-header">
-          <span class="topic-icon">🚀</span>
-          <h2 class="topic-title">Space</h2>
-          <span class="topic-count">4 stories</span>
-        </header>
-        <div class="stories-grid">
-        <article class="story lead-story">
-          <div class="story-meta-top"><span class="story-source">arstechnica.com</span></div>
-          <h3 class="story-headline"><a href="https://arstechnica.com/science/2026/04/black-hole-mergers-put-limits-on-star-destroying-supernovae/" target="_blank" rel="noopener">LIGO data hints at supernovae so powerful they leave nothing behind</a></h3>
-          <p class="story-summary">Many of the early exoplanet discoveries were exciting on their own, confirming that there really were strange new worlds out in the Universe. But over time, our focus has shifted more toward numbers, as we began using th…</p>
-          <a class="story-readmore" href="https://arstechnica.com/science/2026/04/black-hole-mergers-put-limits-on-star-destroying-supernovae/" target="_blank" rel="noopener">Continue reading →</a>
+    </section>
+    <section class="topic" id="space" style="--tc:#9e7ab5;animation-delay:0.14s">
+      <header class="topic-head">
+        <span class="topic-icon">🚀</span>
+        <span class="topic-name">Space</span>
+        <span class="topic-count">4 stories</span>
+      </header>
+      <div class="cards">
+        <article class="card lead">
+          <div class="card-source">arstechnica.com</div>
+          <h3 class="card-title">
+            <a href="https://arstechnica.com/science/2026/04/black-hole-mergers-put-limits-on-star-destroying-supernovae/" target="_blank" rel="noopener">LIGO data hints at supernovae so powerful they leave nothing behind</a>
+          </h3>
+          <p class="card-summary">Many of the early exoplanet discoveries were exciting on their own, confirming that there really were strange new worlds out in the Universe. But over time, our focus has shifted more toward numbers, as we began using the frequency of objects like super-Earths…</p>
+          <a class="card-read" href="https://arstechnica.com/science/2026/04/black-hole-mergers-put-limits-on-star-destroying-supernovae/" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">arstechnica.com</span></div>
-          <h3 class="story-headline"><a href="https://arstechnica.com/science/2026/04/sweden-goes-back-to-basics-swapping-screens-for-books-in-the-classroom/" target="_blank" rel="noopener">Sweden goes back to basics, swapping screens for books in the classroom</a></h3>
-          <p class="story-summary">In 2023, the Swedish government announced that the country’s schools would be going back to basics , emphasizing skills such as reading and writing, particularly in early grades. After mostly being sidelined, physical bo…</p>
-          <a class="story-readmore" href="https://arstechnica.com/science/2026/04/sweden-goes-back-to-basics-swapping-screens-for-books-in-the-classroom/" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">arstechnica.com</div>
+          <h3 class="card-title">
+            <a href="https://arstechnica.com/science/2026/04/sweden-goes-back-to-basics-swapping-screens-for-books-in-the-classroom/" target="_blank" rel="noopener">Sweden goes back to basics, swapping screens for books in the classroom</a>
+          </h3>
+          <p class="card-summary">In 2023, the Swedish government announced that the country’s schools would be going back to basics , emphasizing skills such as reading and writing, particularly in early grades. After mostly being sidelined, physical books are now being reintroduced into clas…</p>
+          <a class="card-read" href="https://arstechnica.com/science/2026/04/sweden-goes-back-to-basics-swapping-screens-for-books-in-the-classroom/" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">arstechnica.com</span></div>
-          <h3 class="story-headline"><a href="https://arstechnica.com/space/2026/04/launch-day-has-arrived-for-nasas-artemis-ii-mission-heres-what-to-expect/" target="_blank" rel="noopener">Launch day has arrived for NASA's Artemis II mission—here's what to expect</a></h3>
-          <p class="story-summary">KENNEDY SPACE CENTER, Fla. —Launching to the Moon is an all-day undertaking, something the four astronauts waiting to climb aboard NASA's Artemis II rocket know well. "It is actually a very long day," said Victor Glover,…</p>
-          <a class="story-readmore" href="https://arstechnica.com/space/2026/04/launch-day-has-arrived-for-nasas-artemis-ii-mission-heres-what-to-expect/" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">arstechnica.com</div>
+          <h3 class="card-title">
+            <a href="https://arstechnica.com/space/2026/04/launch-day-has-arrived-for-nasas-artemis-ii-mission-heres-what-to-expect/" target="_blank" rel="noopener">Launch day has arrived for NASA's Artemis II mission—here's what to expect</a>
+          </h3>
+          <p class="card-summary">KENNEDY SPACE CENTER, Fla. —Launching to the Moon is an all-day undertaking, something the four astronauts waiting to climb aboard NASA's Artemis II rocket know well. "It is actually a very long day," said Victor Glover, the pilot on Artemis II. "We wake up ab…</p>
+          <a class="card-read" href="https://arstechnica.com/space/2026/04/launch-day-has-arrived-for-nasas-artemis-ii-mission-heres-what-to-expect/" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">arstechnica.com</span></div>
-          <h3 class="story-headline"><a href="https://arstechnica.com/space/2026/03/nasa-is-leading-the-way-to-the-moon-but-the-military-wont-be-far-behind/" target="_blank" rel="noopener">NASA is leading the way to the Moon, but the military won't be far behind</a></h3>
-          <p class="story-summary">KENNEDY SPACE CENTER, Florida — The US military has always been part of NASA's human spaceflight program. The first astronauts were nearly all military pilots, and two of the four crew members set to fly around the Moon …</p>
-          <a class="story-readmore" href="https://arstechnica.com/space/2026/03/nasa-is-leading-the-way-to-the-moon-but-the-military-wont-be-far-behind/" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">arstechnica.com</div>
+          <h3 class="card-title">
+            <a href="https://arstechnica.com/space/2026/03/nasa-is-leading-the-way-to-the-moon-but-the-military-wont-be-far-behind/" target="_blank" rel="noopener">NASA is leading the way to the Moon, but the military won't be far behind</a>
+          </h3>
+          <p class="card-summary">KENNEDY SPACE CENTER, Florida — The US military has always been part of NASA's human spaceflight program. The first astronauts were nearly all military pilots, and two of the four crew members set to fly around the Moon on NASA's Artemis II mission were Navy t…</p>
+          <a class="card-read" href="https://arstechnica.com/space/2026/03/nasa-is-leading-the-way-to-the-moon-but-the-military-wont-be-far-behind/" target="_blank" rel="noopener">Read full story →</a>
         </article></div>
-      </section>
-      <section class="topic-section" id="video-gaming" style="animation-delay:0.18s">
-        <header class="topic-header">
-          <span class="topic-icon">🎮</span>
-          <h2 class="topic-title">Video Gaming</h2>
-          <span class="topic-count">8 stories</span>
-        </header>
-        <div class="stories-grid">
-        <article class="story lead-story">
-          <div class="story-meta-top"><span class="story-source">pcgamer.com</span></div>
-          <h3 class="story-headline"><a href="https://www.pcgamer.com/games/rpg/diablo-4s-april-fowls-day-joke-is-a-big-chicken-boss-who-drops-a-cluckton-of-unique-loot-like-the-cluckonomicon-and-the-eggcecutioner/" target="_blank" rel="noopener">Diablo 4's 'April Fowl's Day' joke is a big chicken boss who drops a cluckton of unique loot, like the 'Cluckonomicon' and the 'Eggcecutioner'</a></h3>
-          <p class="story-summary">Watch out, Mephisto: A true terror has arrived in Diablo 4 in the form of a giant chicken. It's April Fool's Day (or April Fowl's Day, if you will) and Blizzard has unleashed a new world boss that drops entirely unique, …</p>
-          <a class="story-readmore" href="https://www.pcgamer.com/games/rpg/diablo-4s-april-fowls-day-joke-is-a-big-chicken-boss-who-drops-a-cluckton-of-unique-loot-like-the-cluckonomicon-and-the-eggcecutioner/" target="_blank" rel="noopener">Continue reading →</a>
+    </section>
+    <section class="topic" id="video-gaming" style="--tc:#be8c4a;animation-delay:0.21s">
+      <header class="topic-head">
+        <span class="topic-icon">🎮</span>
+        <span class="topic-name">Video Gaming</span>
+        <span class="topic-count">8 stories</span>
+      </header>
+      <div class="cards">
+        <article class="card lead">
+          <div class="card-source">pcgamer.com</div>
+          <h3 class="card-title">
+            <a href="https://www.pcgamer.com/games/rpg/diablo-4s-april-fowls-day-joke-is-a-big-chicken-boss-who-drops-a-cluckton-of-unique-loot-like-the-cluckonomicon-and-the-eggcecutioner/" target="_blank" rel="noopener">Diablo 4's 'April Fowl's Day' joke is a big chicken boss who drops a cluckton of unique loot, like the 'Cluckonomicon' and the 'Eggcecutioner'</a>
+          </h3>
+          <p class="card-summary">Watch out, Mephisto: A true terror has arrived in Diablo 4 in the form of a giant chicken. It's April Fool's Day (or April Fowl's Day, if you will) and Blizzard has unleashed a new world boss that drops entirely unique, chicken-flavored loot. I barely missed t…</p>
+          <a class="card-read" href="https://www.pcgamer.com/games/rpg/diablo-4s-april-fowls-day-joke-is-a-big-chicken-boss-who-drops-a-cluckton-of-unique-loot-like-the-cluckonomicon-and-the-eggcecutioner/" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">pcgamer.com</span></div>
-          <h3 class="story-headline"><a href="https://www.pcgamer.com/gaming-industry/the-most-baffling-apostrophe-in-gaming-history-a-pc-gamer-investigation/" target="_blank" rel="noopener">The most baffling apostrophe in gaming history: a PC Gamer investigation</a></h3>
-          <p class="story-summary">"Minishoot’ Adventures is a delight, questionable apostrophe use in the title and all," we wrote back in 2024 , in a roundup of the year's great crop of metroidvanias. Compared to its contemporaries Animal Well and Nine …</p>
-          <a class="story-readmore" href="https://www.pcgamer.com/gaming-industry/the-most-baffling-apostrophe-in-gaming-history-a-pc-gamer-investigation/" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">pcgamer.com</div>
+          <h3 class="card-title">
+            <a href="https://www.pcgamer.com/gaming-industry/the-most-baffling-apostrophe-in-gaming-history-a-pc-gamer-investigation/" target="_blank" rel="noopener">The most baffling apostrophe in gaming history: a PC Gamer investigation</a>
+          </h3>
+          <p class="card-summary">"Minishoot’ Adventures is a delight, questionable apostrophe use in the title and all," we wrote back in 2024 , in a roundup of the year's great crop of metroidvanias. Compared to its contemporaries Animal Well and Nine Sols, Minishoot' Adventures didn't get a…</p>
+          <a class="card-read" href="https://www.pcgamer.com/gaming-industry/the-most-baffling-apostrophe-in-gaming-history-a-pc-gamer-investigation/" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">pcgamer.com</span></div>
-          <h3 class="story-headline"><a href="https://www.pcgamer.com/gaming-industry/us-patent-office-revokes-nintendos-controversial-pokemon-battling-patent-in-nonfinal-decision/" target="_blank" rel="noopener">US Patent Office revokes Nintendo's controversial Pokémon battling patent in nonfinal decision</a></h3>
-          <p class="story-summary">Amidst its ongoing Japanese patent lawsuit against Palworld developer Pocketpair, Nintendo thoroughly stirred the legal pot on this side of the Pacific when news broke in September 2025 that the United States Patent and …</p>
-          <a class="story-readmore" href="https://www.pcgamer.com/gaming-industry/us-patent-office-revokes-nintendos-controversial-pokemon-battling-patent-in-nonfinal-decision/" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">pcgamer.com</div>
+          <h3 class="card-title">
+            <a href="https://www.pcgamer.com/gaming-industry/us-patent-office-revokes-nintendos-controversial-pokemon-battling-patent-in-nonfinal-decision/" target="_blank" rel="noopener">US Patent Office revokes Nintendo's controversial Pokémon battling patent in nonfinal decision</a>
+          </h3>
+          <p class="card-summary">Amidst its ongoing Japanese patent lawsuit against Palworld developer Pocketpair, Nintendo thoroughly stirred the legal pot on this side of the Pacific when news broke in September 2025 that the United States Patent and Trademark Office had granted the publish…</p>
+          <a class="card-read" href="https://www.pcgamer.com/gaming-industry/us-patent-office-revokes-nintendos-controversial-pokemon-battling-patent-in-nonfinal-decision/" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">pcgamer.com</span></div>
-          <h3 class="story-headline"><a href="https://www.pcgamer.com/games/garrys-mod-successor-s-and-box-finally-arrives-on-steam-on-april-28/" target="_blank" rel="noopener">Garry's Mod successor s&box finally arrives on Steam on April 28</a></h3>
-          <p class="story-summary">20 years after Garry's Mod changed pretty much everything, Facepunch Studios has revealed that the sandbox successor s&box (yes, pronounced "sandbox") will finally launch on Steam on April 28. The news arrived not with a…</p>
-          <a class="story-readmore" href="https://www.pcgamer.com/games/garrys-mod-successor-s-and-box-finally-arrives-on-steam-on-april-28/" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">pcgamer.com</div>
+          <h3 class="card-title">
+            <a href="https://www.pcgamer.com/games/garrys-mod-successor-s-and-box-finally-arrives-on-steam-on-april-28/" target="_blank" rel="noopener">Garry's Mod successor s&box finally arrives on Steam on April 28</a>
+          </h3>
+          <p class="card-summary">20 years after Garry's Mod changed pretty much everything, Facepunch Studios has revealed that the sandbox successor s&box (yes, pronounced "sandbox") will finally launch on Steam on April 28. The news arrived not with a big announcement or flashy marketing pu…</p>
+          <a class="card-read" href="https://www.pcgamer.com/games/garrys-mod-successor-s-and-box-finally-arrives-on-steam-on-april-28/" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">pcgamer.com</span></div>
-          <h3 class="story-headline"><a href="https://www.pcgamer.com/games/fps/black-ops-7s-april-fools-joke-is-very-much-real-the-smallest-call-of-duty-map-in-history/" target="_blank" rel="noopener">Black Ops 7's April Fools' joke is very much real: the smallest Call of Duty map in history</a></h3>
-          <p class="story-summary">The only way to make a decent April Fools' joke these days is pretend you're making something totally ridiculous and then actually make that thing. That's the route Treyarch took with its seasonal goof in Black Ops 7, wh…</p>
-          <a class="story-readmore" href="https://www.pcgamer.com/games/fps/black-ops-7s-april-fools-joke-is-very-much-real-the-smallest-call-of-duty-map-in-history/" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">pcgamer.com</div>
+          <h3 class="card-title">
+            <a href="https://www.pcgamer.com/games/fps/black-ops-7s-april-fools-joke-is-very-much-real-the-smallest-call-of-duty-map-in-history/" target="_blank" rel="noopener">Black Ops 7's April Fools' joke is very much real: the smallest Call of Duty map in history</a>
+          </h3>
+          <p class="card-summary">The only way to make a decent April Fools' joke these days is pretend you're making something totally ridiculous and then actually make that thing. That's the route Treyarch took with its seasonal goof in Black Ops 7, which it unveiled today with an X post dep…</p>
+          <a class="card-read" href="https://www.pcgamer.com/games/fps/black-ops-7s-april-fools-joke-is-very-much-real-the-smallest-call-of-duty-map-in-history/" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">kotaku.com</span></div>
-          <h3 class="story-headline"><a href="https://kotaku.com/super-mario-bros-speedrunner-niftski-speedrun-tas-input-world-record-2000684012" target="_blank" rel="noopener">Super Mario Bros. Speedrunner Claims He’s Being Sabotaged</a></h3>
-          <p class="story-summary">Speedrun.com suddenly banned his preferred input method after voting to allow it just four months prior</p>
-          <a class="story-readmore" href="https://kotaku.com/super-mario-bros-speedrunner-niftski-speedrun-tas-input-world-record-2000684012" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">kotaku.com</div>
+          <h3 class="card-title">
+            <a href="https://kotaku.com/super-mario-bros-speedrunner-niftski-speedrun-tas-input-world-record-2000684012" target="_blank" rel="noopener">Super Mario Bros. Speedrunner Claims He’s Being Sabotaged</a>
+          </h3>
+          <p class="card-summary">Speedrun.com suddenly banned his preferred input method after voting to allow it just four months prior</p>
+          <a class="card-read" href="https://kotaku.com/super-mario-bros-speedrunner-niftski-speedrun-tas-input-world-record-2000684012" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">kotaku.com</span></div>
-          <h3 class="story-headline"><a href="https://kotaku.com/stormgate-rts-patch-offline-mode-after-server-provider-ditches-them-for-ai-2000683998" target="_blank" rel="noopener">Always-Online RTS Has To Quickly Patch In Offline Mode After Server Provider Ditches Them For AI</a></h3>
-          <p class="story-summary">Stormgate 's multiplayer modes will not be available until the devs find a new company to provide online support</p>
-          <a class="story-readmore" href="https://kotaku.com/stormgate-rts-patch-offline-mode-after-server-provider-ditches-them-for-ai-2000683998" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">kotaku.com</div>
+          <h3 class="card-title">
+            <a href="https://kotaku.com/stormgate-rts-patch-offline-mode-after-server-provider-ditches-them-for-ai-2000683998" target="_blank" rel="noopener">Always-Online RTS Has To Quickly Patch In Offline Mode After Server Provider Ditches Them For AI</a>
+          </h3>
+          <p class="card-summary">Stormgate 's multiplayer modes will not be available until the devs find a new company to provide online support</p>
+          <a class="card-read" href="https://kotaku.com/stormgate-rts-patch-offline-mode-after-server-provider-ditches-them-for-ai-2000683998" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">kotaku.com</span></div>
-          <h3 class="story-headline"><a href="https://kotaku.com/marvel-rivals-donald-trump-no-kings-kingpin-manhattan-2000684007" target="_blank" rel="noopener">Marvel Rivals Is Not Where I Expected To See A Reference To The ‘No Kings’ Anti-Trump Rallies</a></h3>
-          <p class="story-summary">The new Lower Manhattan map draws a line between Trump and Kingpin</p>
-          <a class="story-readmore" href="https://kotaku.com/marvel-rivals-donald-trump-no-kings-kingpin-manhattan-2000684007" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">kotaku.com</div>
+          <h3 class="card-title">
+            <a href="https://kotaku.com/marvel-rivals-donald-trump-no-kings-kingpin-manhattan-2000684007" target="_blank" rel="noopener">Marvel Rivals Is Not Where I Expected To See A Reference To The ‘No Kings’ Anti-Trump Rallies</a>
+          </h3>
+          <p class="card-summary">The new Lower Manhattan map draws a line between Trump and Kingpin</p>
+          <a class="card-read" href="https://kotaku.com/marvel-rivals-donald-trump-no-kings-kingpin-manhattan-2000684007" target="_blank" rel="noopener">Read full story →</a>
         </article></div>
-      </section>
-      <section class="topic-section" id="global-finance" style="animation-delay:0.24s">
-        <header class="topic-header">
-          <span class="topic-icon">📈</span>
-          <h2 class="topic-title">Global Finance</h2>
-          <span class="topic-count">8 stories</span>
-        </header>
-        <div class="stories-grid">
-        <article class="story lead-story">
-          <div class="story-meta-top"><span class="story-source">theguardian.com</span></div>
-          <h3 class="story-headline"><a href="https://www.theguardian.com/technology/2026/apr/01/spacex-public-offering-stock-market" target="_blank" rel="noopener">SpaceX confidentially files to go public at $1.75tn, reports say</a></h3>
-          <p class="story-summary">Elon Musk’s rocket company could go public as early as June, Bloomberg reports Sign up for the Breaking News US email to get newsletter alerts in your inbox SpaceX has confidentially filed for an initial public offering …</p>
-          <a class="story-readmore" href="https://www.theguardian.com/technology/2026/apr/01/spacex-public-offering-stock-market" target="_blank" rel="noopener">Continue reading →</a>
+    </section>
+    <section class="topic" id="global-finance" style="--tc:#5a9e8a;animation-delay:0.28s">
+      <header class="topic-head">
+        <span class="topic-icon">📈</span>
+        <span class="topic-name">Global Finance</span>
+        <span class="topic-count">8 stories</span>
+      </header>
+      <div class="cards">
+        <article class="card lead">
+          <div class="card-source">theguardian.com</div>
+          <h3 class="card-title">
+            <a href="https://www.theguardian.com/technology/2026/apr/01/spacex-public-offering-stock-market" target="_blank" rel="noopener">SpaceX confidentially files to go public at $1.75tn, reports say</a>
+          </h3>
+          <p class="card-summary">Elon Musk’s rocket company could go public as early as June, Bloomberg reports Sign up for the Breaking News US email to get newsletter alerts in your inbox SpaceX has confidentially filed for an initial public offering on the US stock market, according to rep…</p>
+          <a class="card-read" href="https://www.theguardian.com/technology/2026/apr/01/spacex-public-offering-stock-market" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">theguardian.com</span></div>
-          <h3 class="story-headline"><a href="https://www.theguardian.com/world/2026/apr/01/iran-war-oil-prices-trump-crude-stock-markets-business-us-israel-middle-east" target="_blank" rel="noopener">Oil price falls and markets rally after Trump says Iran war over in ‘two to three weeks’</a></h3>
-          <p class="story-summary">US president’s claim that conflict is nearing end prompts 15% drop in Brent crude and stock market climb in Asia Business live – latest updates Oil prices tumbled and stock markets have rallied across the world after Don…</p>
-          <a class="story-readmore" href="https://www.theguardian.com/world/2026/apr/01/iran-war-oil-prices-trump-crude-stock-markets-business-us-israel-middle-east" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">theguardian.com</div>
+          <h3 class="card-title">
+            <a href="https://www.theguardian.com/world/2026/apr/01/iran-war-oil-prices-trump-crude-stock-markets-business-us-israel-middle-east" target="_blank" rel="noopener">Oil price falls and markets rally after Trump says Iran war over in ‘two to three weeks’</a>
+          </h3>
+          <p class="card-summary">US president’s claim that conflict is nearing end prompts 15% drop in Brent crude and stock market climb in Asia Business live – latest updates Oil prices tumbled and stock markets have rallied across the world after Donald Trump said the war in Iran would end…</p>
+          <a class="card-read" href="https://www.theguardian.com/world/2026/apr/01/iran-war-oil-prices-trump-crude-stock-markets-business-us-israel-middle-east" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">theguardian.com</span></div>
-          <h3 class="story-headline"><a href="https://www.theguardian.com/technology/2026/apr/01/us-tech-firm-oracle-cuts-thousands-of-jobs-as-it-steps-up-ai-spending-larry-ellison" target="_blank" rel="noopener">US tech firm Oracle cuts thousands of jobs as it steps up AI spending</a></h3>
-          <p class="story-summary">Company chaired by Trump ally Larry Ellison seeks to reassure investors that bet on AI infrastructure will pay off Oracle is cutting thousands of jobs as the US technology company seeks to reassure investors that its bet…</p>
-          <a class="story-readmore" href="https://www.theguardian.com/technology/2026/apr/01/us-tech-firm-oracle-cuts-thousands-of-jobs-as-it-steps-up-ai-spending-larry-ellison" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">theguardian.com</div>
+          <h3 class="card-title">
+            <a href="https://www.theguardian.com/technology/2026/apr/01/us-tech-firm-oracle-cuts-thousands-of-jobs-as-it-steps-up-ai-spending-larry-ellison" target="_blank" rel="noopener">US tech firm Oracle cuts thousands of jobs as it steps up AI spending</a>
+          </h3>
+          <p class="card-summary">Company chaired by Trump ally Larry Ellison seeks to reassure investors that bet on AI infrastructure will pay off Oracle is cutting thousands of jobs as the US technology company seeks to reassure investors that its bet on AI infrastructure will pay off. The …</p>
+          <a class="card-read" href="https://www.theguardian.com/technology/2026/apr/01/us-tech-firm-oracle-cuts-thousands-of-jobs-as-it-steps-up-ai-spending-larry-ellison" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">theguardian.com</span></div>
-          <h3 class="story-headline"><a href="https://www.theguardian.com/business/2026/mar/31/us-average-fuel-prices-iran-war" target="_blank" rel="noopener">US average fuel price passes $4 a gallon for first time in four years amid Iran war</a></h3>
-          <p class="story-summary">Stocks rally after reports suggest Trump might end the war soon, saying ‘we’re not going to be there for too much longer’ Sign up for the Breaking News US email to get newsletter alerts in your inbox Average US fuel pric…</p>
-          <a class="story-readmore" href="https://www.theguardian.com/business/2026/mar/31/us-average-fuel-prices-iran-war" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">theguardian.com</div>
+          <h3 class="card-title">
+            <a href="https://www.theguardian.com/business/2026/mar/31/us-average-fuel-prices-iran-war" target="_blank" rel="noopener">US average fuel price passes $4 a gallon for first time in four years amid Iran war</a>
+          </h3>
+          <p class="card-summary">Stocks rally after reports suggest Trump might end the war soon, saying ‘we’re not going to be there for too much longer’ Sign up for the Breaking News US email to get newsletter alerts in your inbox Average US fuel prices have exceeded $4 a gallon for the fir…</p>
+          <a class="card-read" href="https://www.theguardian.com/business/2026/mar/31/us-average-fuel-prices-iran-war" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">theguardian.com</span></div>
-          <h3 class="story-headline"><a href="https://www.theguardian.com/world/2026/mar/30/how-could-us-forcibly-reopen-strait-of-hormuz-iran-what-are-the-risks" target="_blank" rel="noopener">How could US forcibly reopen strait of Hormuz and what are the risks?</a></h3>
-          <p class="story-summary">US ground troops have arrived in Middle East but military options to open strait risk strong retaliation from Iran Middle East crisis – live updates The arrival of US ground invasion forces in the Middle East over the we…</p>
-          <a class="story-readmore" href="https://www.theguardian.com/world/2026/mar/30/how-could-us-forcibly-reopen-strait-of-hormuz-iran-what-are-the-risks" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">theguardian.com</div>
+          <h3 class="card-title">
+            <a href="https://www.theguardian.com/world/2026/mar/30/how-could-us-forcibly-reopen-strait-of-hormuz-iran-what-are-the-risks" target="_blank" rel="noopener">How could US forcibly reopen strait of Hormuz and what are the risks?</a>
+          </h3>
+          <p class="card-summary">US ground troops have arrived in Middle East but military options to open strait risk strong retaliation from Iran Middle East crisis – live updates The arrival of US ground invasion forces in the Middle East over the weekend provides Donald Trump with the mus…</p>
+          <a class="card-read" href="https://www.theguardian.com/world/2026/mar/30/how-could-us-forcibly-reopen-strait-of-hormuz-iran-what-are-the-risks" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">wsj.com</span></div>
-          <h3 class="story-headline"><a href="https://www.wsj.com/articles/nikkei-may-rise-as-weak-yen-raises-earnings-hopes-776a8056?mod=rss_markets_main" target="_blank" rel="noopener">Stocks Sink in Broad AI Rout Sparked by China's DeepSeek</a></h3>
-          <p class="story-summary">U.S. stocks were mostly lower, with the Nasdaq leading declines as makers of AI infrastructure suffered steep falls, many in the double digits. Nvidia was down 16%.</p>
-          <a class="story-readmore" href="https://www.wsj.com/articles/nikkei-may-rise-as-weak-yen-raises-earnings-hopes-776a8056?mod=rss_markets_main" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">wsj.com</div>
+          <h3 class="card-title">
+            <a href="https://www.wsj.com/articles/nikkei-may-rise-as-weak-yen-raises-earnings-hopes-776a8056?mod=rss_markets_main" target="_blank" rel="noopener">Stocks Sink in Broad AI Rout Sparked by China's DeepSeek</a>
+          </h3>
+          <p class="card-summary">U.S. stocks were mostly lower, with the Nasdaq leading declines as makers of AI infrastructure suffered steep falls, many in the double digits. Nvidia was down 16%.</p>
+          <a class="card-read" href="https://www.wsj.com/articles/nikkei-may-rise-as-weak-yen-raises-earnings-hopes-776a8056?mod=rss_markets_main" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">wsj.com</span></div>
-          <h3 class="story-headline"><a href="https://www.wsj.com/articles/gold-edges-lower-feds-rate-decision-in-focus-09dbfceb?mod=rss_markets_main" target="_blank" rel="noopener">Comex Gold, Silver Settle Lower</a></h3>
-          <p class="story-summary">Gold settled 1.4% lower, down two of the past three sessions, and silver fell 2.5%, down three of the past four sessions.</p>
-          <a class="story-readmore" href="https://www.wsj.com/articles/gold-edges-lower-feds-rate-decision-in-focus-09dbfceb?mod=rss_markets_main" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">wsj.com</div>
+          <h3 class="card-title">
+            <a href="https://www.wsj.com/articles/gold-edges-lower-feds-rate-decision-in-focus-09dbfceb?mod=rss_markets_main" target="_blank" rel="noopener">Comex Gold, Silver Settle Lower</a>
+          </h3>
+          <p class="card-summary">Gold settled 1.4% lower, down two of the past three sessions, and silver fell 2.5%, down three of the past four sessions.</p>
+          <a class="card-read" href="https://www.wsj.com/articles/gold-edges-lower-feds-rate-decision-in-focus-09dbfceb?mod=rss_markets_main" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">wsj.com</span></div>
-          <h3 class="story-headline"><a href="https://www.wsj.com/articles/deepseek-us-ai-stocks-nvidia-broadcom-6cdfae81?mod=rss_markets_main" target="_blank" rel="noopener">DeepSeek Won't Sink U.S. AI Titans</a></h3>
-          <p class="story-summary">Panic fueling the selloff of Nvidia, Broadcom and other tech giants is overblown.</p>
-          <a class="story-readmore" href="https://www.wsj.com/articles/deepseek-us-ai-stocks-nvidia-broadcom-6cdfae81?mod=rss_markets_main" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">wsj.com</div>
+          <h3 class="card-title">
+            <a href="https://www.wsj.com/articles/deepseek-us-ai-stocks-nvidia-broadcom-6cdfae81?mod=rss_markets_main" target="_blank" rel="noopener">DeepSeek Won't Sink U.S. AI Titans</a>
+          </h3>
+          <p class="card-summary">Panic fueling the selloff of Nvidia, Broadcom and other tech giants is overblown.</p>
+          <a class="card-read" href="https://www.wsj.com/articles/deepseek-us-ai-stocks-nvidia-broadcom-6cdfae81?mod=rss_markets_main" target="_blank" rel="noopener">Read full story →</a>
         </article></div>
-      </section>
-      <section class="topic-section" id="cryptocurrencies" style="animation-delay:0.30s">
-        <header class="topic-header">
-          <span class="topic-icon">₿</span>
-          <h2 class="topic-title">Cryptocurrencies</h2>
-          <span class="topic-count">8 stories</span>
-        </header>
-        <div class="stories-grid">
-        <article class="story lead-story">
-          <div class="story-meta-top"><span class="story-source">coinjournal.net</span></div>
-          <h3 class="story-headline"><a href="https://coinjournal.net/news/zec-dips-3-5-despite-broader-crypto-markets-recovery/" target="_blank" rel="noopener">ZEC dips 3.5% despite broader crypto market’s recovery</a></h3>
-          <p class="story-summary">Key takeaways ZCash is one of the worst performers among the top 30 cryptocurrencies by market cap, down 3.5% in the last 24 hours. The coin could rally higher in the near term amid demand for privacy-focused cryptocurre…</p>
-          <a class="story-readmore" href="https://coinjournal.net/news/zec-dips-3-5-despite-broader-crypto-markets-recovery/" target="_blank" rel="noopener">Continue reading →</a>
+    </section>
+    <section class="topic" id="cryptocurrencies" style="--tc:#c4a35a;animation-delay:0.35s">
+      <header class="topic-head">
+        <span class="topic-icon">₿</span>
+        <span class="topic-name">Cryptocurrencies</span>
+        <span class="topic-count">8 stories</span>
+      </header>
+      <div class="cards">
+        <article class="card lead">
+          <div class="card-source">coinjournal.net</div>
+          <h3 class="card-title">
+            <a href="https://coinjournal.net/news/zec-dips-3-5-despite-broader-crypto-markets-recovery/" target="_blank" rel="noopener">ZEC dips 3.5% despite broader crypto market’s recovery</a>
+          </h3>
+          <p class="card-summary">Key takeaways ZCash is one of the worst performers among the top 30 cryptocurrencies by market cap, down 3.5% in the last 24 hours. The coin could rally higher in the near term amid demand for privacy-focused cryptocurrencies. ZEC slips as broader market recov…</p>
+          <a class="card-read" href="https://coinjournal.net/news/zec-dips-3-5-despite-broader-crypto-markets-recovery/" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">coinjournal.net</span></div>
-          <h3 class="story-headline"><a href="https://coinjournal.net/news/sol-price-stalls-below-key-resistance-even-as-solanas-fundamentals-surge/" target="_blank" rel="noopener">SOL price stalls below key resistance even as Solana’s fundamentals surge</a></h3>
-          <p class="story-summary">Solana (SOL) price consolidates near $80 support amid strong fundamentals. Institutional staking and brokerage access boost Solana adoption. Key resistance at $87.65, and a breakout could target $97$107. Solanas native t…</p>
-          <a class="story-readmore" href="https://coinjournal.net/news/sol-price-stalls-below-key-resistance-even-as-solanas-fundamentals-surge/" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">coinjournal.net</div>
+          <h3 class="card-title">
+            <a href="https://coinjournal.net/news/sol-price-stalls-below-key-resistance-even-as-solanas-fundamentals-surge/" target="_blank" rel="noopener">SOL price stalls below key resistance even as Solana’s fundamentals surge</a>
+          </h3>
+          <p class="card-summary">Solana (SOL) price consolidates near $80 support amid strong fundamentals. Institutional staking and brokerage access boost Solana adoption. Key resistance at $87.65, and a breakout could target $97$107. Solanas native token, SOL, has been showing signs of con…</p>
+          <a class="card-read" href="https://coinjournal.net/news/sol-price-stalls-below-key-resistance-even-as-solanas-fundamentals-surge/" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">coinjournal.net</span></div>
-          <h3 class="story-headline"><a href="https://coinjournal.net/news/heres-why-stakestone-price-exploded-136-to-new-ath/" target="_blank" rel="noopener">Here’s why StakeStone price exploded 136% to new ATH</a></h3>
-          <p class="story-summary">StakeStone price jumped from $0.11 to above $0.26, going vertical amid a spike in daily volume. The sharp gain follows a whale accumulating over 25.5 million STO tokens. STO price could see a steep pullback amid profit-t…</p>
-          <a class="story-readmore" href="https://coinjournal.net/news/heres-why-stakestone-price-exploded-136-to-new-ath/" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">coinjournal.net</div>
+          <h3 class="card-title">
+            <a href="https://coinjournal.net/news/heres-why-stakestone-price-exploded-136-to-new-ath/" target="_blank" rel="noopener">Here’s why StakeStone price exploded 136% to new ATH</a>
+          </h3>
+          <p class="card-summary">StakeStone price jumped from $0.11 to above $0.26, going vertical amid a spike in daily volume. The sharp gain follows a whale accumulating over 25.5 million STO tokens. STO price could see a steep pullback amid profit-taking deals. StakeStone (STO) price expl…</p>
+          <a class="card-read" href="https://coinjournal.net/news/heres-why-stakestone-price-exploded-136-to-new-ath/" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">coinjournal.net</span></div>
-          <h3 class="story-headline"><a href="https://coinjournal.net/news/xrp-sol-and-ada-price-outlook-as-btc-struggles-ahead-of-key-macro-events/" target="_blank" rel="noopener">XRP, SOL and ADA price outlook as BTC struggles ahead of key macro events</a></h3>
-          <p class="story-summary">XRP, Solana, and Cardano prices hover near $1.30, $80, and $0.24, respectively. Currently, BTC trades around $66,430 after retreating from highs of $68,000. Analysts say the week is heavy on macroeconomic data releases, …</p>
-          <a class="story-readmore" href="https://coinjournal.net/news/xrp-sol-and-ada-price-outlook-as-btc-struggles-ahead-of-key-macro-events/" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">coinjournal.net</div>
+          <h3 class="card-title">
+            <a href="https://coinjournal.net/news/xrp-sol-and-ada-price-outlook-as-btc-struggles-ahead-of-key-macro-events/" target="_blank" rel="noopener">XRP, SOL and ADA price outlook as BTC struggles ahead of key macro events</a>
+          </h3>
+          <p class="card-summary">XRP, Solana, and Cardano prices hover near $1.30, $80, and $0.24, respectively. Currently, BTC trades around $66,430 after retreating from highs of $68,000. Analysts say the week is heavy on macroeconomic data releases, and thats likely to impact volatility. X…</p>
+          <a class="card-read" href="https://coinjournal.net/news/xrp-sol-and-ada-price-outlook-as-btc-struggles-ahead-of-key-macro-events/" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">coinjournal.net</span></div>
-          <h3 class="story-headline"><a href="https://coinjournal.net/news/bitcoin-stalls-near-66k-is-a-bigger-drop-coming-this-week/" target="_blank" rel="noopener">Bitcoin stalls near $66K: is a bigger drop coming this week?</a></h3>
-          <p class="story-summary">Bitcoin price tests $65,000 support amid oversold conditions and weak momentum. Rising US real yields and oil prices weigh on short-term buying pressure. Traders should watch the $68,400 resistance and $65,100 support fo…</p>
-          <a class="story-readmore" href="https://coinjournal.net/news/bitcoin-stalls-near-66k-is-a-bigger-drop-coming-this-week/" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">coinjournal.net</div>
+          <h3 class="card-title">
+            <a href="https://coinjournal.net/news/bitcoin-stalls-near-66k-is-a-bigger-drop-coming-this-week/" target="_blank" rel="noopener">Bitcoin stalls near $66K: is a bigger drop coming this week?</a>
+          </h3>
+          <p class="card-summary">Bitcoin price tests $65,000 support amid oversold conditions and weak momentum. Rising US real yields and oil prices weigh on short-term buying pressure. Traders should watch the $68,400 resistance and $65,100 support for the next moves. Bitcoin (BTC) is showi…</p>
+          <a class="card-read" href="https://coinjournal.net/news/bitcoin-stalls-near-66k-is-a-bigger-drop-coming-this-week/" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">cointelegraph.com</span></div>
-          <h3 class="story-headline"><a href="https://cointelegraph.com/news/hyperliquid-whale-makes-dollar80m-bet-on-market-crash-is-bitcoin-in-trouble?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">Hyperliquid whale makes $80M bet on market crash: Is Bitcoin in trouble?</a></h3>
-          <p class="story-summary">A Hyperliquid DEX whale has placed an $80 million bet that Bitcoin will crash and oil will rally, but data show this trader has lost millions in the past.</p>
-          <a class="story-readmore" href="https://cointelegraph.com/news/hyperliquid-whale-makes-dollar80m-bet-on-market-crash-is-bitcoin-in-trouble?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">cointelegraph.com</div>
+          <h3 class="card-title">
+            <a href="https://cointelegraph.com/news/us-treasury-state-stablecoin-regulation?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">US Treasury seeks public input for state-level stablecoin regulations</a>
+          </h3>
+          <p class="card-summary">The Treasury published its notice of proposed rulemaking as the market capitalization of dollar-pegged stablecoins neared $300 billion.</p>
+          <a class="card-read" href="https://cointelegraph.com/news/us-treasury-state-stablecoin-regulation?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">cointelegraph.com</span></div>
-          <h3 class="story-headline"><a href="https://cointelegraph.com/news/citadel-backed-edx-national-trust-bank-charter?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">EDX seeks OCC trust bank charter for institutional crypto custody</a></h3>
-          <p class="story-summary">The crypto exchange seeks a charter from the Office of the Comptroller of the Currency to separate custody from trading and expand services under a regulated banking framework.</p>
-          <a class="story-readmore" href="https://cointelegraph.com/news/citadel-backed-edx-national-trust-bank-charter?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">cointelegraph.com</div>
+          <h3 class="card-title">
+            <a href="https://cointelegraph.com/news/hyperliquid-whale-makes-dollar80m-bet-on-market-crash-is-bitcoin-in-trouble?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">Hyperliquid whale makes $80M bet on market crash: Is Bitcoin in trouble?</a>
+          </h3>
+          <p class="card-summary">A Hyperliquid DEX whale has placed an $80 million bet that Bitcoin will crash and oil will rally, but data show this trader has lost millions in the past.</p>
+          <a class="card-read" href="https://cointelegraph.com/news/hyperliquid-whale-makes-dollar80m-bet-on-market-crash-is-bitcoin-in-trouble?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">cointelegraph.com</span></div>
-          <h3 class="story-headline"><a href="https://cointelegraph.com/news/crypto-pactether-exec-us-elections?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">Pro-crypto PAC to be headed by Tether executive ahead of US midterms</a></h3>
-          <p class="story-summary">A debate over stablecoin yield, likely to impact Tether, is underway in the US government as lawmakers consider a market structure bill.</p>
-          <a class="story-readmore" href="https://cointelegraph.com/news/crypto-pactether-exec-us-elections?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">cointelegraph.com</div>
+          <h3 class="card-title">
+            <a href="https://cointelegraph.com/news/citadel-backed-edx-national-trust-bank-charter?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">EDX seeks OCC trust bank charter for institutional crypto custody</a>
+          </h3>
+          <p class="card-summary">The crypto exchange seeks a charter from the Office of the Comptroller of the Currency to separate custody from trading and expand services under a regulated banking framework.</p>
+          <a class="card-read" href="https://cointelegraph.com/news/citadel-backed-edx-national-trust-bank-charter?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">Read full story →</a>
         </article></div>
-      </section>
-      <section class="topic-section" id="balkan-politics" style="animation-delay:0.36s">
-        <header class="topic-header">
-          <span class="topic-icon">🗺️</span>
-          <h2 class="topic-title">Balkan Politics</h2>
-          <span class="topic-count">5 stories</span>
-        </header>
-        <div class="stories-grid">
-        <article class="story lead-story">
-          <div class="story-meta-top"><span class="story-source">balkaninsight.com</span></div>
-          <h3 class="story-headline"><a href="https://balkaninsight.com/2026/04/01/world-cup-qualification-brings-rare-sense-of-hope-to-bosnia/bi/" target="_blank" rel="noopener">World Cup Qualification Brings Rare Sense of Hope to Bosnia</a></h3>
-          <p class="story-summary">Bosnia and Herzegovina’s victory to secure a place in the 2026 World Cup sparked celebrations on the streets of Sarajevo, offering a moment of joy amid constant political crisis – and pointing a way towards possible prog…</p>
-          <a class="story-readmore" href="https://balkaninsight.com/2026/04/01/world-cup-qualification-brings-rare-sense-of-hope-to-bosnia/bi/" target="_blank" rel="noopener">Continue reading →</a>
+    </section>
+    <section class="topic" id="balkan-politics" style="--tc:#8ebe6e;animation-delay:0.42s">
+      <header class="topic-head">
+        <span class="topic-icon">🗺️</span>
+        <span class="topic-name">Balkan Politics</span>
+        <span class="topic-count">5 stories</span>
+      </header>
+      <div class="cards">
+        <article class="card lead">
+          <div class="card-source">balkaninsight.com</div>
+          <h3 class="card-title">
+            <a href="https://balkaninsight.com/2026/04/01/world-cup-qualification-brings-rare-sense-of-hope-to-bosnia/bi/" target="_blank" rel="noopener">World Cup Qualification Brings Rare Sense of Hope to Bosnia</a>
+          </h3>
+          <p class="card-summary">Bosnia and Herzegovina’s victory to secure a place in the 2026 World Cup sparked celebrations on the streets of Sarajevo, offering a moment of joy amid constant political crisis – and pointing a way towards possible progress.</p>
+          <a class="card-read" href="https://balkaninsight.com/2026/04/01/world-cup-qualification-brings-rare-sense-of-hope-to-bosnia/bi/" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">balkaninsight.com</span></div>
-          <h3 class="story-headline"><a href="https://balkaninsight.com/2026/04/01/red-flags-raised-in-registration-of-pro-trump-observer-for-serbian-polls/bi/" target="_blank" rel="noopener">Red Flags Raised in Registration of Pro-Trump ‘Observer’ for Serbian Polls</a></h3>
-          <p class="story-summary">A pro-Trump conservative think tank has denied sending an observer to Serbia’s local elections, so how was its ‘Global Coalitions and Foreign Policy Coordinator’ registered as such?</p>
-          <a class="story-readmore" href="https://balkaninsight.com/2026/04/01/red-flags-raised-in-registration-of-pro-trump-observer-for-serbian-polls/bi/" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">balkaninsight.com</div>
+          <h3 class="card-title">
+            <a href="https://balkaninsight.com/2026/04/01/red-flags-raised-in-registration-of-pro-trump-observer-for-serbian-polls/bi/" target="_blank" rel="noopener">Red Flags Raised in Registration of Pro-Trump ‘Observer’ for Serbian Polls</a>
+          </h3>
+          <p class="card-summary">A pro-Trump conservative think tank has denied sending an observer to Serbia’s local elections, so how was its ‘Global Coalitions and Foreign Policy Coordinator’ registered as such?</p>
+          <a class="card-read" href="https://balkaninsight.com/2026/04/01/red-flags-raised-in-registration-of-pro-trump-observer-for-serbian-polls/bi/" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">balkaninsight.com</span></div>
-          <h3 class="story-headline"><a href="https://balkaninsight.com/2026/04/01/trial-of-greek-anarchist-over-apartment-explosion-opens-in-athens/bi/" target="_blank" rel="noopener">Trial of Greek Anarchist Over Apartment Explosion Opens in Athens</a></h3>
-          <p class="story-summary">The trial of Nikos Romanos and three other anarchists over a deadly blast in Athens in 2024 has started, amid claims by his supporters that he was targeted for his radical views.</p>
-          <a class="story-readmore" href="https://balkaninsight.com/2026/04/01/trial-of-greek-anarchist-over-apartment-explosion-opens-in-athens/bi/" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">balkaninsight.com</div>
+          <h3 class="card-title">
+            <a href="https://balkaninsight.com/2026/04/01/trial-of-greek-anarchist-over-apartment-explosion-opens-in-athens/bi/" target="_blank" rel="noopener">Trial of Greek Anarchist Over Apartment Explosion Opens in Athens</a>
+          </h3>
+          <p class="card-summary">The trial of Nikos Romanos and three other anarchists over a deadly blast in Athens in 2024 has started, amid claims by his supporters that he was targeted for his radical views.</p>
+          <a class="card-read" href="https://balkaninsight.com/2026/04/01/trial-of-greek-anarchist-over-apartment-explosion-opens-in-athens/bi/" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">balkaninsight.com</span></div>
-          <h3 class="story-headline"><a href="https://balkaninsight.com/2026/04/01/belgrade-university-police-raid-triggers-protests-and-clashes/bi/" target="_blank" rel="noopener">Belgrade University Police Raid Triggers Protests and Clashes</a></h3>
-          <p class="story-summary">Police raid on university rectorate's offices, as part of probe into student's recent death, sparks clashes with protesters who gathered outside.</p>
-          <a class="story-readmore" href="https://balkaninsight.com/2026/04/01/belgrade-university-police-raid-triggers-protests-and-clashes/bi/" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">balkaninsight.com</div>
+          <h3 class="card-title">
+            <a href="https://balkaninsight.com/2026/04/01/belgrade-university-police-raid-triggers-protests-and-clashes/bi/" target="_blank" rel="noopener">Belgrade University Police Raid Triggers Protests and Clashes</a>
+          </h3>
+          <p class="card-summary">Police raid on university rectorate's offices, as part of probe into student's recent death, sparks clashes with protesters who gathered outside.</p>
+          <a class="card-read" href="https://balkaninsight.com/2026/04/01/belgrade-university-police-raid-triggers-protests-and-clashes/bi/" target="_blank" rel="noopener">Read full story →</a>
         </article>
-        <article class="story standard-story">
-          <div class="story-meta-top"><span class="story-source">balkaninsight.com</span></div>
-          <h3 class="story-headline"><a href="https://balkaninsight.com/2026/04/01/bosnia-and-turkey-celebrate-world-cup-qualification-after-playoff-victories/bi/" target="_blank" rel="noopener">Bosnia and Turkey Celebrate World Cup Qualification After Playoff Victories</a></h3>
-          <p class="story-summary">Joy across Bosnia and Turkey, as men’s teams win play-offs to qualify for the 2026 World Cup – and heartache in Kosovo, as narrow defeat dashes country’s hopes.</p>
-          <a class="story-readmore" href="https://balkaninsight.com/2026/04/01/bosnia-and-turkey-celebrate-world-cup-qualification-after-playoff-victories/bi/" target="_blank" rel="noopener">Continue reading →</a>
+        <article class="card ">
+          <div class="card-source">balkaninsight.com</div>
+          <h3 class="card-title">
+            <a href="https://balkaninsight.com/2026/04/01/bosnia-and-turkey-celebrate-world-cup-qualification-after-playoff-victories/bi/" target="_blank" rel="noopener">Bosnia and Turkey Celebrate World Cup Qualification After Playoff Victories</a>
+          </h3>
+          <p class="card-summary">Joy across Bosnia and Turkey, as men’s teams win play-offs to qualify for the 2026 World Cup – and heartache in Kosovo, as narrow defeat dashes country’s hopes.</p>
+          <a class="card-read" href="https://balkaninsight.com/2026/04/01/bosnia-and-turkey-celebrate-world-cup-qualification-after-playoff-victories/bi/" target="_blank" rel="noopener">Read full story →</a>
         </article></div>
-      </section>
+    </section>
+    <section class="topic" id="ni-news" style="--tc:#be6e8c;animation-delay:0.49s">
+      <header class="topic-head">
+        <span class="topic-icon">🏙️</span>
+        <span class="topic-name">Niš News</span>
+        <span class="topic-count">5 stories</span>
+      </header>
+      <div class="cards">
+        <article class="card lead">
+          <div class="card-source">juznevesti.com</div>
+          <h3 class="card-title">
+            <a href="https://www.juznevesti.com/drustvo/skup-u-nisu-podrska-rektoru-djokicu-studenti-nezadovoljni-cutanjem-svog-rektora/" target="_blank" rel="noopener">Skup u Nišu: Podrška rektoru Đokiću, studenti nezadovoljni ćutanjem svog rektora</a>
+          </h3>
+          <p class="card-summary">Podrška rektoru Vladanu Đokiću i podsetnik da za smrt 16 ljudi u Novom Sadu ni 17 meseci kasnije niko nije odgovarao obeležili su večerašnji skup u Nišu. Studenti smatraju da je sramno što se niški rektor ne oglašava u vezi sa situacijom na beogradskom Univerz…</p>
+          <a class="card-read" href="https://www.juznevesti.com/drustvo/skup-u-nisu-podrska-rektoru-djokicu-studenti-nezadovoljni-cutanjem-svog-rektora/" target="_blank" rel="noopener">Read full story →</a>
+        </article>
+        <article class="card ">
+          <div class="card-source">juznevesti.com</div>
+          <h3 class="card-title">
+            <a href="https://www.juznevesti.com/hronika/dojava-o-bombi-u-niskoj-delti/" target="_blank" rel="noopener">Lažna dojava o bombi u niškoj „Delti“</a>
+          </h3>
+          <p class="card-summary">Zbog toga što je prijavljeno da je u tržnom centru Delta Planet postavljena ekslozivna naprava, policija je evakuisala građane. Iz policije su potvrdili da nisu pronađene eksplozivne naprave. Dok zaposleni u nekim objektima kažu da su im obezbeđenja rekli da n…</p>
+          <a class="card-read" href="https://www.juznevesti.com/hronika/dojava-o-bombi-u-niskoj-delti/" target="_blank" rel="noopener">Read full story →</a>
+        </article>
+        <article class="card ">
+          <div class="card-source">juznevesti.com</div>
+          <h3 class="card-title">
+            <a href="https://www.juznevesti.com/kultura/raspisan-konkurs-za-nagradu-stevan-sremac-u-nisu/" target="_blank" rel="noopener">Raspisan konkurs za nagradu „Stevan Sremac“ u Nišu</a>
+          </h3>
+          <p class="card-summary">Književna nagrada “Stevan Sremac” i ove godine će biti dodeljena u Nišu, za knjigu priča ili roman na srpskom jeziku objavljen prošle godine. Izdavači i autori mogu da šalju predloge do kraja aprila, a svečano uručenje nagrade planira se za novembar. Grad Niš …</p>
+          <a class="card-read" href="https://www.juznevesti.com/kultura/raspisan-konkurs-za-nagradu-stevan-sremac-u-nisu/" target="_blank" rel="noopener">Read full story →</a>
+        </article>
+        <article class="card ">
+          <div class="card-source">juznevesti.com</div>
+          <h3 class="card-title">
+            <a href="https://www.juznevesti.com/kultura/nisvil-poziva-zvezde-pop-rok-i-narodne-muzike-da-pevaju-sabana/" target="_blank" rel="noopener">„Nišvil“ poziva zvezde pop, rok i narodne muzike da pevaju Šabana</a>
+          </h3>
+          <p class="card-summary">Povodom 90 godina od rođenja Šabana Bajramovića, Nišvil džez festival uputio je javni poziv vodećim pop, rok i narodnim izvođačima da se priključe jubilarnom programu i na festivalskoj bini izvedu čuvene kompozicije “kralja romske muzike”. Obeležavanje godine …</p>
+          <a class="card-read" href="https://www.juznevesti.com/kultura/nisvil-poziva-zvezde-pop-rok-i-narodne-muzike-da-pevaju-sabana/" target="_blank" rel="noopener">Read full story →</a>
+        </article>
+        <article class="card ">
+          <div class="card-source">juznevesti.com</div>
+          <h3 class="card-title">
+            <a href="https://www.juznevesti.com/kultura/besplatne-projekcije-filmova-slobodne-zone-u-prokuplju-svakog-cetvrtka/" target="_blank" rel="noopener">Besplatne projekcije filmova Slobodne zone u Prokuplju svakog četvrtka</a>
+          </h3>
+          <p class="card-summary">Film klub Prokuplje, u saradnji sa Festivalom Slobodna zona, organizuje projekcije nagrađivanih filmova koje će biti održane u Spomen sobi Rade Drainac u Prokuplju, naredna tri četvrtka, 2, 9. i 16. aprila od 18 sati, a ulaz na sve projekcije je slobodan. Publ…</p>
+          <a class="card-read" href="https://www.juznevesti.com/kultura/besplatne-projekcije-filmova-slobodne-zone-u-prokuplju-svakog-cetvrtka/" target="_blank" rel="noopener">Read full story →</a>
+        </article></div>
+    </section>
   
+    <section class="archive">
+      <div class="arc-label">Past Issues</div>
+      <div class="arc-links"><a class="arc-link" href="archive/2026-04-01.html">01 Apr 2026</a></div>
+    </section>
 </div>
+
 <footer>
-  Generated automatically &nbsp;·&nbsp; Summarised by Claude AI &nbsp;·&nbsp;
+  Refreshed daily · Summarised by Claude AI ·
   <a href="#" onclick="openSettings();return false">Manage sources</a>
 </footer>
 
-<div class="settings-overlay" id="overlay" onclick="maybeClose(event)">
-  <div class="settings-panel" id="panel">
-    <div class="panel-heading">
+<!-- Settings panel -->
+<div class="overlay" id="overlay" onclick="maybeClose(event)">
+  <div class="panel" id="panel">
+    <div class="panel-head">
       Manage Sources
-      <button class="settings-close" onclick="closeSettings()">✕</button>
+      <button class="p-close" onclick="closeSettings()">✕</button>
     </div>
-    <div id="sourcesList"></div>
-    <div class="sec-label">Add new source</div>
+    <div id="srcList"></div>
+    <div class="sec">Add new source</div>
     <div class="add-form">
-      <input type="url" id="newUrl" placeholder="RSS feed URL — https://example.com/feed" />
-      <input type="text" id="newLabel" placeholder="Display name — e.g. My Tech Blog" />
+      <input type="url" id="newUrl" placeholder="RSS feed URL — https://example.com/feed"/>
+      <input type="text" id="newLabel" placeholder="Display name — e.g. My Tech Blog"/>
       <select id="newTopic">
         <option value="">— Select topic —</option>
         <option value="Football">⚽ Football</option>
@@ -491,93 +916,88 @@ footer a:hover{color:var(--accent)}
 <option value="Gadgets & Hardware">🔧 Gadgets & Hardware</option>
 <option value="Leadership">💡 Leadership</option>
 <option value="Balkan Politics">🗺️ Balkan Politics</option>
-<option value="Nis News">🏙️ Nis News</option>
+<option value="Niš News">🏙️ Niš News</option>
       </select>
-      <button class="btn btn-primary" onclick="addSource()">+ Add source</button>
+      <button class="btn btn-p" onclick="addSource()">+ Add source</button>
     </div>
-    <div class="sec-label">Save changes</div>
+    <div class="sec">Save changes</div>
     <p class="notice">
-      Toggle sources on/off above — changes are remembered in your browser instantly.
-      To make them permanent, click <strong>Export config.json</strong>, then replace
-      <code>config.json</code> in your GitHub repo. The next scheduled run will use your updated settings.
+      Toggle sources on/off — changes are saved in your browser instantly.
+      To make them permanent, click <strong>Export config.json</strong> and replace
+      <code>config.json</code> in your GitHub repo. The next scheduled run will pick up your changes.
     </p>
     <div class="btn-row">
-      <button class="btn btn-primary" onclick="exportConfig()">Export config.json</button>
+      <button class="btn btn-p" onclick="exportConfig()">Export config.json</button>
       <button class="btn" onclick="togglePreview()">Preview JSON</button>
     </div>
-    <pre class="export-area" id="exportPre"></pre>
+    <pre class="exp-pre" id="expPre"></pre>
   </div>
 </div>
 
 <script>
-const TOPICS = ["Football", "AI & Tech", "Space", "Video Gaming", "Global Finance", "Cryptocurrencies", "Gadgets & Hardware", "Leadership", "Balkan Politics", "Nis News"];
-const ICONS  = {"Football": "⚽", "AI & Tech": "🤖", "Space": "🚀", "Video Gaming": "🎮", "Global Finance": "📈", "Cryptocurrencies": "₿", "Gadgets & Hardware": "🔧", "Leadership": "💡", "Balkan Politics": "🗺️", "Nis News": "🏙️"};
-let sources  = JSON.parse(localStorage.getItem('nd_sources') || 'null') || [{"url": "https://www.skysports.com/rss/12040", "topic": "Football", "label": "Sky Sports Football", "enabled": true}, {"url": "https://www.skysports.com/rss/12603", "topic": "Football", "label": "Sky Sports Transfers", "enabled": true}, {"url": "https://www.goal.com/feeds/en/news", "topic": "Football", "label": "Goal.com", "enabled": true}, {"url": "https://www.transfermarkt.us/rss", "topic": "Football", "label": "Transfermarkt", "enabled": true}, {"url": "https://techcrunch.com/feed/", "topic": "AI & Tech", "label": "TechCrunch", "enabled": true}, {"url": "https://feeds.arstechnica.com/arstechnica/index", "topic": "AI & Tech", "label": "Ars Technica", "enabled": true}, {"url": "https://www.wired.com/feed/rss", "topic": "AI & Tech", "label": "Wired", "enabled": true}, {"url": "https://mashable.com/feeds/rss/all", "topic": "AI & Tech", "label": "Mashable", "enabled": true}, {"url": "https://feeds.arstechnica.com/arstechnica/science", "topic": "Space", "label": "Ars Technica Science", "enabled": true}, {"url": "https://www.pcgamer.com/rss/", "topic": "Video Gaming", "label": "PC Gamer", "enabled": true}, {"url": "https://kotaku.com/rss", "topic": "Video Gaming", "label": "Kotaku", "enabled": true}, {"url": "https://www.rockpapershotgun.com/feed", "topic": "Video Gaming", "label": "Rock Paper Shotgun", "enabled": true}, {"url": "https://steamdeckhq.com/feed/", "topic": "Video Gaming", "label": "Steam Deck HQ", "enabled": true}, {"url": "https://www.theguardian.com/business/rss", "topic": "Global Finance", "label": "The Guardian Business", "enabled": true}, {"url": "https://feeds.a.dj.com/rss/RSSMarketsMain.xml", "topic": "Global Finance", "label": "WSJ Markets", "enabled": true}, {"url": "https://coinjournal.net/feed/", "topic": "Cryptocurrencies", "label": "Coin Journal", "enabled": true}, {"url": "https://cointelegraph.com/rss", "topic": "Cryptocurrencies", "label": "CoinTelegraph", "enabled": true}, {"url": "https://feeds.hbr.org/harvardbusiness", "topic": "Leadership", "label": "Harvard Business Review", "enabled": true}, {"url": "https://balkaninsight.com/feed/", "topic": "Balkan Politics", "label": "Balkan Insight", "enabled": true}, {"url": "https://www.theguardian.com/world/europe/rss", "topic": "Balkan Politics", "label": "The Guardian Europe", "enabled": true}, {"url": "https://www.juznevesti.com/rss", "topic": "Niš News", "label": "Južne Vesti", "enabled": true}, {"url": "https://niskevesti.rs/feed/", "topic": "Niš News", "label": "Niške Vesti", "enabled": true}];
+const TOPICS = ["Football", "AI & Tech", "Space", "Video Gaming", "Global Finance", "Cryptocurrencies", "Gadgets & Hardware", "Leadership", "Balkan Politics", "Niš News"];
+const ICONS  = {"Football": "⚽", "AI & Tech": "🤖", "Space": "🚀", "Video Gaming": "🎮", "Global Finance": "📈", "Cryptocurrencies": "₿", "Gadgets & Hardware": "🔧", "Leadership": "💡", "Balkan Politics": "🗺️", "Niš News": "🏙️"};
+let sources  = JSON.parse(localStorage.getItem('nd_sources')||'null') || [{"url": "https://www.skysports.com/rss/12040", "topic": "Football", "label": "Sky Sports Football", "enabled": true}, {"url": "https://www.skysports.com/rss/12603", "topic": "Football", "label": "Sky Sports Transfers", "enabled": true}, {"url": "https://www.goal.com/feeds/en/news", "topic": "Football", "label": "Goal.com", "enabled": true}, {"url": "https://www.transfermarkt.us/rss", "topic": "Football", "label": "Transfermarkt", "enabled": true}, {"url": "https://techcrunch.com/feed/", "topic": "AI & Tech", "label": "TechCrunch", "enabled": true}, {"url": "https://feeds.arstechnica.com/arstechnica/index", "topic": "AI & Tech", "label": "Ars Technica", "enabled": true}, {"url": "https://www.wired.com/feed/rss", "topic": "AI & Tech", "label": "Wired", "enabled": true}, {"url": "https://mashable.com/feeds/rss/all", "topic": "AI & Tech", "label": "Mashable", "enabled": true}, {"url": "https://feeds.arstechnica.com/arstechnica/science", "topic": "Space", "label": "Ars Technica Science", "enabled": true}, {"url": "https://www.pcgamer.com/rss/", "topic": "Video Gaming", "label": "PC Gamer", "enabled": true}, {"url": "https://kotaku.com/rss", "topic": "Video Gaming", "label": "Kotaku", "enabled": true}, {"url": "https://www.rockpapershotgun.com/feed", "topic": "Video Gaming", "label": "Rock Paper Shotgun", "enabled": true}, {"url": "https://steamdeckhq.com/feed/", "topic": "Video Gaming", "label": "Steam Deck HQ", "enabled": true}, {"url": "https://www.theguardian.com/business/rss", "topic": "Global Finance", "label": "The Guardian Business", "enabled": true}, {"url": "https://feeds.a.dj.com/rss/RSSMarketsMain.xml", "topic": "Global Finance", "label": "WSJ Markets", "enabled": true}, {"url": "https://coinjournal.net/feed/", "topic": "Cryptocurrencies", "label": "Coin Journal", "enabled": true}, {"url": "https://cointelegraph.com/rss", "topic": "Cryptocurrencies", "label": "CoinTelegraph", "enabled": true}, {"url": "https://feeds.hbr.org/harvardbusiness", "topic": "Leadership", "label": "Harvard Business Review", "enabled": true}, {"url": "https://balkaninsight.com/feed/", "topic": "Balkan Politics", "label": "Balkan Insight", "enabled": true}, {"url": "https://www.theguardian.com/world/europe/rss", "topic": "Balkan Politics", "label": "The Guardian Europe", "enabled": true}, {"url": "https://www.juznevesti.com/rss", "topic": "Niš News", "label": "Južne Vesti", "enabled": true}, {"url": "https://niskevesti.rs/feed/", "topic": "Niš News", "label": "Niške Vesti", "enabled": true}];
 
-function renderSources() {
-  const grouped = {};
-  sources.forEach((s,i) => {
-    if (!grouped[s.topic]) grouped[s.topic] = [];
-    grouped[s.topic].push({...s, _i:i});
-  });
-  let h = '';
-  for (const t of TOPICS) {
-    if (!grouped[t]) continue;
-    h += `<div class="sec-label">${ICONS[t]||''} ${t}</div>`;
-    grouped[t].forEach(s => {
-      h += `<div class="source-item">
-        <input type="checkbox" ${s.enabled?'checked':''} onchange="toggle(${s._i},this.checked)"/>
-        <span class="source-label">${s.label}</span>
+function renderSrc(){
+  const g={};
+  sources.forEach((s,i)=>{(g[s.topic]=g[s.topic]||[]).push({...s,_i:i})});
+  let h='';
+  for(const t of TOPICS){
+    if(!g[t]) continue;
+    h+=`<div class="sec">${ICONS[t]||''} ${t}</div>`;
+    g[t].forEach(s=>{
+      h+=`<div class="src-row">
+        <input type="checkbox" ${s.enabled?'checked':''} onchange="tog(${s._i},this.checked)"/>
+        <span class="src-name">${s.label}</span>
       </div>`;
     });
   }
-  document.getElementById('sourcesList').innerHTML = h;
+  document.getElementById('srcList').innerHTML=h;
 }
 
-function toggle(i,v) {
-  sources[i].enabled = v;
-  localStorage.setItem('nd_sources', JSON.stringify(sources));
+function tog(i,v){
+  sources[i].enabled=v;
+  localStorage.setItem('nd_sources',JSON.stringify(sources));
 }
 
-function addSource() {
-  const url   = document.getElementById('newUrl').value.trim();
-  const label = document.getElementById('newLabel').value.trim();
-  const topic = document.getElementById('newTopic').value;
-  if (!url||!label||!topic) { alert('Please fill in all three fields.'); return; }
+function addSource(){
+  const url=document.getElementById('newUrl').value.trim();
+  const label=document.getElementById('newLabel').value.trim();
+  const topic=document.getElementById('newTopic').value;
+  if(!url||!label||!topic){alert('Please fill in all three fields.');return;}
   sources.push({url,label,topic,enabled:true});
-  localStorage.setItem('nd_sources', JSON.stringify(sources));
+  localStorage.setItem('nd_sources',JSON.stringify(sources));
   document.getElementById('newUrl').value='';
   document.getElementById('newLabel').value='';
   document.getElementById('newTopic').value='';
-  renderSources();
+  renderSrc();
 }
 
-function getConfig() {
+function getCfg(){
   return {
-    settings:{max_articles_per_topic:8,max_articles_per_source:5,digest_title:"Your Daily Digest"},
+    settings:{max_articles_per_topic:8,max_articles_per_source:5,digest_title:"Nervicev Dnevnik"},
     sources:sources.map(s=>({url:s.url,topic:s.topic,label:s.label,enabled:s.enabled}))
   };
 }
 
-function exportConfig() {
-  const blob = new Blob([JSON.stringify(getConfig(),null,2)],{type:'application/json'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'config.json';
-  a.click();
+function exportConfig(){
+  const b=new Blob([JSON.stringify(getCfg(),null,2)],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(b);a.download='config.json';a.click();
 }
 
-function togglePreview() {
-  const el = document.getElementById('exportPre');
-  if (el.style.display==='block'){ el.style.display='none'; return; }
-  el.textContent = JSON.stringify(getConfig(),null,2);
-  el.style.display = 'block';
+function togglePreview(){
+  const el=document.getElementById('expPre');
+  if(el.style.display==='block'){el.style.display='none';return;}
+  el.textContent=JSON.stringify(getCfg(),null,2);
+  el.style.display='block';
 }
 
-function openSettings()  { document.getElementById('overlay').classList.add('open'); renderSources(); }
-function closeSettings() { document.getElementById('overlay').classList.remove('open'); }
-function maybeClose(e)   { if(e.target===document.getElementById('overlay')) closeSettings(); }
-document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeSettings(); });
+function openSettings(){document.getElementById('overlay').classList.add('open');renderSrc();}
+function closeSettings(){document.getElementById('overlay').classList.remove('open');}
+function maybeClose(e){if(e.target===document.getElementById('overlay'))closeSettings();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSettings();});
 </script>
 </body>
 </html>
