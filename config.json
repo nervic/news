@@ -2,7 +2,7 @@
   "settings": {
     "max_articles_per_topic": 8,
     "max_articles_per_source": 5,
-    "digest_title": "Your Daily Digest"
+    "digest_title": "Nervicev Dnevnik"
   },
   "sources": [
     { "url": "https://www.skysports.com/rss/12040",                "topic": "Football",          "label": "Sky Sports Football",       "enabled": true },
