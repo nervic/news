@@ -2,8 +2,10 @@ name: Daily News Digest
 
 on:
   schedule:
-    # Runs at 12:00 UTC = 14:00 Serbia time (CEST, UTC+2 in summer)
-    - cron: '0 12 * * *'
+    # 06:00 UTC = 08:00 Serbia time (CEST, UTC+2 in summer)
+    - cron: '0 6 * * *'
+    # 14:00 UTC = 16:00 Serbia time (CEST, UTC+2 in summer)
+    - cron: '0 14 * * *'
   workflow_dispatch:
     # Lets you trigger a manual run anytime from the Actions tab
 
