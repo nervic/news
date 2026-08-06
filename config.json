@@ -1,6 +1,6 @@
 {
   "settings": {
-    "max_articles_per_topic": 30,
+    "max_articles_per_topic": 8,
     "max_articles_per_source": 5,
     "digest_title": "Nervicev Dnevnik"
   },
@@ -15,7 +15,7 @@
       "url": "https://www.skysports.com/rss/12603",
       "topic": "Football",
       "label": "Sky Sports Transfers",
-      "enabled": true
+      "enabled": false
     },
     {
       "url": "https://www.goal.com/feeds/en/news",
@@ -159,7 +159,7 @@
       "url": "https://pistaljka.rs/rss",
       "topic": "Balkan Politics",
       "label": "Pistaljka",
-      "enabled": true
+      "enabled": false
     },
     {
       "url": "https://novaekonomija.rs/feed/",
@@ -195,6 +195,24 @@
       "url": "https://www.tomshardware.com/feeds.xml",
       "topic": "Gadgets & Hardware",
       "label": "Tom's Hardware",
+      "enabled": true
+    },
+    {
+      "url": "https://www.skysports.com/rss/11095",
+      "topic": "Football",
+      "label": "Sky Sports Football",
+      "enabled": false
+    },
+    {
+      "url": "https://talksport.com/football/transfers/feed/",
+      "topic": "Football",
+      "label": "Talksport Transfers",
+      "enabled": true
+    },
+    {
+      "url": "https://www.kamatica.com/rss/kamatica-vesti.xml",
+      "topic": "Global Finance",
+      "label": "Kamatica",
       "enabled": true
     }
   ]
