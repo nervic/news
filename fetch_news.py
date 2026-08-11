@@ -159,6 +159,50 @@ def _clean(text: str) -> str:
     return text[:900]
 
 
+def _summarize_batch(topic: str, batch: list) -> None:
+    """Summarize one batch of articles in place."""
+    import urllib.request as ureq
+    payload = {
+        "model": "claude-sonnet-4-20250514",
+        "max_tokens": 4096,
+        "system": (
+            "You are a sharp news editor. Given article titles and text, return ONLY a JSON array "
+            "where each element has 'index' (int) and 'summary' (string). "
+            "Each summary: exactly 2 clear sentences, plain text, no markdown, no bullet points. "
+            "Be direct and informative. Preserve names, numbers, and key facts exactly. "
+            "If the source text is in Serbian, write the summary in Serbian."
+        ),
+        "messages": [{"role": "user", "content": (
+            f"Topic: {topic}\n\n"
+            + "\n\n".join(
+                f"[{i}] TITLE: {a['title']}\nTEXT: {a['summary']}"
+                for i, a in enumerate(batch)
+            )
+            + "\n\nReturn JSON array only."
+        )}],
+    }
+    req = ureq.Request(
+        "https://api.anthropic.com/v1/messages",
+        data=json.dumps(payload).encode(),
+        headers={
+            "Content-Type":      "application/json",
+            "x-api-key":         ANTHROPIC_KEY,
+            "anthropic-version": "2023-06-01",
+        },
+        method="POST",
+    )
+    with ureq.urlopen(req, timeout=60) as resp:
+        data = json.loads(resp.read())
+    raw = data["content"][0]["text"].strip()
+    raw = re.sub(r"^```[a-z]*\n?", "", raw)
+    raw = re.sub(r"\n?```$", "", raw)
+    idx_map = {s["index"]: s["summary"] for s in json.loads(raw)}
+    for i, a in enumerate(batch):
+        a["ai_summary"] = idx_map.get(i, a["summary"][:260])
+
+
+BATCH_SIZE = 10
+
 def summarize(topic: str, articles: list) -> list:
     if not ANTHROPIC_KEY:
         for a in articles:
@@ -166,48 +210,17 @@ def summarize(topic: str, articles: list) -> list:
             a["ai_summary"] = snip[:260] + ("…" if len(snip) > 260 else "")
         return articles
 
-    import urllib.request as ureq
-    payload = {
-        "model": "claude-sonnet-4-20250514",
-        "max_tokens": 1200,
-        "system": (
-            "You are a sharp news editor. Given article titles and text, return ONLY a JSON array "
-            "where each element has 'index' (int) and 'summary' (string). "
-            "Each summary: exactly 2 clear sentences, plain text, no markdown, no bullet points. "
-            "Be direct and informative. Preserve names, numbers, and key facts exactly."
-        ),
-        "messages": [{"role": "user", "content": (
-            f"Topic: {topic}\n\n"
-            + "\n\n".join(
-                f"[{i}] TITLE: {a['title']}\nTEXT: {a['summary']}"
-                for i, a in enumerate(articles)
-            )
-            + "\n\nReturn JSON array only."
-        )}],
-    }
-    try:
-        req = ureq.Request(
-            "https://api.anthropic.com/v1/messages",
-            data=json.dumps(payload).encode(),
-            headers={
-                "Content-Type":      "application/json",
-                "x-api-key":         ANTHROPIC_KEY,
-                "anthropic-version": "2023-06-01",
-            },
-            method="POST",
-        )
-        with ureq.urlopen(req, timeout=30) as resp:
-            data = json.loads(resp.read())
-        raw = data["content"][0]["text"].strip()
-        raw = re.sub(r"^```[a-z]*\n?", "", raw)
-        raw = re.sub(r"\n?```$", "", raw)
-        idx_map = {s["index"]: s["summary"] for s in json.loads(raw)}
-        for i, a in enumerate(articles):
-            a["ai_summary"] = idx_map.get(i, a["summary"][:260])
-    except Exception as e:
-        print(f"    ⚠  Claude API error ({topic}): {e}")
-        for a in articles:
-            a["ai_summary"] = a["summary"][:260] + ("…" if len(a["summary"]) > 260 else "")
+    # Process in batches so large topics do not blow past max_tokens
+    for start in range(0, len(articles), BATCH_SIZE):
+        batch = articles[start:start + BATCH_SIZE]
+        try:
+            _summarize_batch(topic, batch)
+        except Exception as e:
+            print(f"    ⚠  Claude API error ({topic}, batch {start//BATCH_SIZE + 1}): {e}")
+            for a in batch:
+                a["ai_summary"] = a["summary"][:260] + ("…" if len(a["summary"]) > 260 else "")
+        time.sleep(0.5)
+
     return articles
 
 
