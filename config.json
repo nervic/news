@@ -1,219 +1,80 @@
 {
   "settings": {
-    "max_articles_per_topic": 8,
-    "max_articles_per_source": 5,
+    "max_articles_per_topic": 30,
+    "max_articles_per_source": 7,
     "digest_title": "Nervicev Dnevnik"
   },
   "sources": [
-    {
-      "url": "https://www.skysports.com/rss/12040",
-      "topic": "Football",
-      "label": "Sky Sports Football",
-      "enabled": false
-    },
-    {
-      "url": "https://www.skysports.com/rss/12603",
-      "topic": "Football",
-      "label": "Sky Sports Transfers",
-      "enabled": false
-    },
-    {
-      "url": "https://www.goal.com/feeds/en/news",
-      "topic": "Football",
-      "label": "Goal.com",
-      "enabled": true
-    },
-    {
-      "url": "https://www.transfermarkt.us/rss",
-      "topic": "Football",
-      "label": "Transfermarkt",
-      "enabled": true
-    },
-    {
-      "url": "https://techcrunch.com/feed/",
-      "topic": "AI & Tech",
-      "label": "TechCrunch",
-      "enabled": true
-    },
-    {
-      "url": "https://feeds.arstechnica.com/arstechnica/index",
-      "topic": "AI & Tech",
-      "label": "Ars Technica",
-      "enabled": true
-    },
-    {
-      "url": "https://www.wired.com/feed/rss",
-      "topic": "AI & Tech",
-      "label": "Wired",
-      "enabled": true
-    },
-    {
-      "url": "https://mashable.com/feeds/rss/all",
-      "topic": "AI & Tech",
-      "label": "Mashable",
-      "enabled": true
-    },
-    {
-      "url": "https://feeds.arstechnica.com/arstechnica/science",
-      "topic": "Space",
-      "label": "Ars Technica Science",
-      "enabled": true
-    },
-    {
-      "url": "https://www.pcgamer.com/rss/",
-      "topic": "Video Gaming",
-      "label": "PC Gamer",
-      "enabled": true
-    },
-    {
-      "url": "https://kotaku.com/rss",
-      "topic": "Video Gaming",
-      "label": "Kotaku",
-      "enabled": true
-    },
-    {
-      "url": "https://www.rockpapershotgun.com/feed",
-      "topic": "Video Gaming",
-      "label": "Rock Paper Shotgun",
-      "enabled": true
-    },
-    {
-      "url": "https://steamdeckhq.com/feed/",
-      "topic": "Video Gaming",
-      "label": "Steam Deck HQ",
-      "enabled": true
-    },
-    {
-      "url": "https://www.theguardian.com/business/rss",
-      "topic": "Global Finance",
-      "label": "The Guardian Business",
-      "enabled": true
-    },
-    {
-      "url": "https://feeds.a.dj.com/rss/RSSMarketsMain.xml",
-      "topic": "Global Finance",
-      "label": "WSJ Markets",
-      "enabled": true
-    },
-    {
-      "url": "https://coinjournal.net/feed/",
-      "topic": "Cryptocurrencies",
-      "label": "Coin Journal",
-      "enabled": true
-    },
-    {
-      "url": "https://cointelegraph.com/rss",
-      "topic": "Cryptocurrencies",
-      "label": "CoinTelegraph",
-      "enabled": true
-    },
-    {
-      "url": "https://feeds.hbr.org/harvardbusiness",
-      "topic": "Leadership",
-      "label": "Harvard Business Review",
-      "enabled": true
-    },
-    {
-      "url": "https://balkaninsight.com/feed/",
-      "topic": "Balkan Politics",
-      "label": "Balkan Insight",
-      "enabled": true
-    },
-    {
-      "url": "https://www.theguardian.com/world/europe/rss",
-      "topic": "Balkan Politics",
-      "label": "The Guardian Europe",
-      "enabled": true
-    },
-    {
-      "url": "https://www.juznevesti.com/rss",
-      "topic": "Niš News",
-      "label": "Južne Vesti",
-      "enabled": true
-    },
-    {
-      "url": "https://niskevesti.rs/feed/",
-      "topic": "Niš News",
-      "label": "Niške Vesti",
-      "enabled": true
-    },
-    {
-      "url": "https://www.transfermarkt.com/rss/news",
-      "topic": "Football",
-      "label": "Transfermarkt",
-      "enabled": true
-    },
-    {
-      "url": "https://www.mozzartsport.com/rss/1.xml",
-      "topic": "Football",
-      "label": "Mozzart Sport",
-      "enabled": true
-    },
-    {
-      "url": "https://www.fourfourtwo.com/feeds.xml",
-      "topic": "Football",
-      "label": "FourFourTwo",
-      "enabled": true
-    },
-    {
-      "url": "https://pistaljka.rs/rss",
-      "topic": "Balkan Politics",
-      "label": "Pistaljka",
-      "enabled": false
-    },
-    {
-      "url": "https://novaekonomija.rs/feed/",
-      "topic": "Balkan Politics",
-      "label": "Nova Ekonomija",
-      "enabled": true
-    },
-    {
-      "url": "https://pescanik.net/category/tekstovi/feed",
-      "topic": "Balkan Politics",
-      "label": "Pescanik",
-      "enabled": true
-    },
-    {
-      "url": "https://www.istinomer.rs/feed/",
-      "topic": "Balkan Politics",
-      "label": "Istinomer",
-      "enabled": true
-    },
-    {
-      "url": "https://www.krik.rs/feed/",
-      "topic": "Balkan Politics",
-      "label": "KRIK",
-      "enabled": true
-    },
-    {
-      "url": "https://benchmark.rs/feed/",
-      "topic": "Gadgets & Hardware",
-      "label": "Benchmark",
-      "enabled": true
-    },
-    {
-      "url": "https://www.tomshardware.com/feeds.xml",
-      "topic": "Gadgets & Hardware",
-      "label": "Tom's Hardware",
-      "enabled": true
-    },
-    {
-      "url": "https://www.skysports.com/rss/11095",
-      "topic": "Football",
-      "label": "Sky Sports Football",
-      "enabled": false
-    },
-    {
-      "url": "https://talksport.com/football/transfers/feed/",
-      "topic": "Football",
-      "label": "Talksport Transfers",
-      "enabled": true
-    },
-    {
-      "url": "https://www.kamatica.com/rss/kamatica-vesti.xml",
-      "topic": "Global Finance",
-      "label": "Kamatica",
-      "enabled": true
-    }
+    { "url": "https://www.skysports.com/rss/12040",                     "topic": "Football",           "label": "Sky Sports Football",     "enabled": false },
+    { "url": "https://www.skysports.com/rss/12603",                     "topic": "Football",           "label": "Sky Sports Transfers",    "enabled": false },
+    { "url": "https://www.skysports.com/rss/11095",                     "topic": "Football",           "label": "Sky Sports Football Alt", "enabled": false },
+    { "url": "https://www.goal.com/feeds/en/news",                      "topic": "Football",           "label": "Goal.com",                "enabled": true },
+    { "url": "https://www.transfermarkt.com/rss/news",                  "topic": "Football",           "label": "Transfermarkt",           "enabled": true },
+    { "url": "https://www.mozzartsport.com/rss/1.xml",                  "topic": "Football",           "label": "Mozzart Sport",           "enabled": true },
+    { "url": "https://www.fourfourtwo.com/feeds.xml",                   "topic": "Football",           "label": "FourFourTwo",             "enabled": true },
+    { "url": "https://talksport.com/football/transfers/feed/",          "topic": "Football",           "label": "Talksport Transfers",     "enabled": true },
+    { "url": "https://www.90min.com/posts.rss",                         "topic": "Football",           "label": "90min",                   "enabled": true },
+    { "url": "https://www.football365.com/feed",                        "topic": "Football",           "label": "Football365",             "enabled": true },
+
+    { "url": "https://techcrunch.com/feed/",                            "topic": "AI & Tech",          "label": "TechCrunch",              "enabled": true },
+    { "url": "https://feeds.arstechnica.com/arstechnica/index",         "topic": "AI & Tech",          "label": "Ars Technica",            "enabled": true },
+    { "url": "https://www.wired.com/feed/rss",                          "topic": "AI & Tech",          "label": "Wired",                   "enabled": true },
+    { "url": "https://mashable.com/feeds/rss/all",                      "topic": "AI & Tech",          "label": "Mashable",                "enabled": true },
+    { "url": "https://www.theverge.com/rss/index.xml",                  "topic": "AI & Tech",          "label": "The Verge",               "enabled": true },
+    { "url": "https://venturebeat.com/feed/",                           "topic": "AI & Tech",          "label": "VentureBeat",             "enabled": true },
+    { "url": "https://www.engadget.com/rss.xml",                        "topic": "AI & Tech",          "label": "Engadget",                "enabled": true },
+
+    { "url": "https://feeds.arstechnica.com/arstechnica/science",       "topic": "Space",              "label": "Ars Technica Science",    "enabled": true },
+    { "url": "https://www.space.com/feeds/all",                         "topic": "Space",              "label": "Space.com",               "enabled": true },
+    { "url": "https://spacenews.com/feed/",                             "topic": "Space",              "label": "SpaceNews",               "enabled": true },
+    { "url": "https://www.nasa.gov/rss/dyn/breaking_news.rss",          "topic": "Space",              "label": "NASA",                    "enabled": true },
+    { "url": "https://phys.org/rss-feed/space-news/",                   "topic": "Space",              "label": "Phys.org Space",          "enabled": true },
+
+    { "url": "https://www.pcgamer.com/rss/",                            "topic": "Video Gaming",       "label": "PC Gamer",                "enabled": true },
+    { "url": "https://kotaku.com/rss",                                  "topic": "Video Gaming",       "label": "Kotaku",                  "enabled": true },
+    { "url": "https://www.rockpapershotgun.com/feed",                   "topic": "Video Gaming",       "label": "Rock Paper Shotgun",      "enabled": true },
+    { "url": "https://steamdeckhq.com/feed/",                           "topic": "Video Gaming",       "label": "Steam Deck HQ",           "enabled": true },
+    { "url": "https://www.eurogamer.net/feed",                          "topic": "Video Gaming",       "label": "Eurogamer",               "enabled": true },
+    { "url": "https://www.gamespot.com/feeds/news/",                    "topic": "Video Gaming",       "label": "GameSpot",                "enabled": true },
+    { "url": "https://www.polygon.com/rss/index.xml",                   "topic": "Video Gaming",       "label": "Polygon",                 "enabled": true },
+
+    { "url": "https://www.theguardian.com/business/rss",                "topic": "Global Finance",     "label": "The Guardian Business",   "enabled": true },
+    { "url": "https://feeds.a.dj.com/rss/RSSMarketsMain.xml",           "topic": "Global Finance",     "label": "WSJ Markets",             "enabled": true },
+    { "url": "https://www.kamatica.com/rss/kamatica-vesti.xml",         "topic": "Global Finance",     "label": "Kamatica",                "enabled": true },
+    { "url": "https://www.forbes.com/business/feed/",                   "topic": "Global Finance",     "label": "Forbes Business",         "enabled": true },
+    { "url": "https://www.forbes.com/money/feed/",                      "topic": "Global Finance",     "label": "Forbes Money",            "enabled": true },
+    { "url": "https://www.cnbc.com/id/100003114/device/rss/rss.html",   "topic": "Global Finance",     "label": "CNBC",                    "enabled": true },
+
+    { "url": "https://coinjournal.net/feed/",                           "topic": "Cryptocurrencies",   "label": "Coin Journal",            "enabled": true },
+    { "url": "https://cointelegraph.com/rss",                           "topic": "Cryptocurrencies",   "label": "CoinTelegraph",           "enabled": true },
+    { "url": "https://www.coindesk.com/arc/outboundfeeds/rss/",         "topic": "Cryptocurrencies",   "label": "CoinDesk",                "enabled": true },
+    { "url": "https://decrypt.co/feed",                                 "topic": "Cryptocurrencies",   "label": "Decrypt",                 "enabled": true },
+    { "url": "https://bitcoinmagazine.com/feed",                        "topic": "Cryptocurrencies",   "label": "Bitcoin Magazine",        "enabled": true },
+
+    { "url": "https://benchmark.rs/feed/",                              "topic": "Gadgets & Hardware", "label": "Benchmark",               "enabled": true },
+    { "url": "https://www.tomshardware.com/feeds.xml",                  "topic": "Gadgets & Hardware", "label": "Tom's Hardware",          "enabled": true },
+    { "url": "https://www.anandtech.com/rss/",                          "topic": "Gadgets & Hardware", "label": "AnandTech",               "enabled": true },
+    { "url": "https://www.techradar.com/rss",                           "topic": "Gadgets & Hardware", "label": "TechRadar",               "enabled": true },
+    { "url": "https://hothardware.com/rss/xml/news",                    "topic": "Gadgets & Hardware", "label": "HotHardware",             "enabled": true },
+
+    { "url": "https://www.forbes.com/leadership/feed/",                 "topic": "Leadership",         "label": "Forbes Leadership",       "enabled": true },
+    { "url": "http://feeds.harvardbusiness.org/harvardbusiness?format=xml", "topic": "Leadership",     "label": "HBR",                     "enabled": true },
+    { "url": "https://www.fastcompany.com/section/leadership/rss",      "topic": "Leadership",         "label": "Fast Company Leadership", "enabled": true },
+    { "url": "https://www.inc.com/rss/",                                "topic": "Leadership",         "label": "Inc.",                    "enabled": true },
+    { "url": "https://feeds.hbr.org/harvardbusiness",                   "topic": "Leadership",         "label": "HBR Legacy Feed",         "enabled": false },
+
+    { "url": "https://balkaninsight.com/feed/",                         "topic": "Balkan Politics",    "label": "Balkan Insight",          "enabled": true },
+    { "url": "https://www.theguardian.com/world/europe/rss",            "topic": "Balkan Politics",    "label": "The Guardian Europe",     "enabled": true },
+    { "url": "https://novaekonomija.rs/feed/",                          "topic": "Balkan Politics",    "label": "Nova Ekonomija",          "enabled": true },
+    { "url": "https://pescanik.net/category/tekstovi/feed",             "topic": "Balkan Politics",    "label": "Pescanik",                "enabled": true },
+    { "url": "https://www.istinomer.rs/feed/",                          "topic": "Balkan Politics",    "label": "Istinomer",               "enabled": true },
+    { "url": "https://www.krik.rs/feed/",                               "topic": "Balkan Politics",    "label": "KRIK",                    "enabled": true },
+    { "url": "https://pistaljka.rs/rss",                                "topic": "Balkan Politics",    "label": "Pistaljka",               "enabled": false },
+    { "url": "https://www.danas.rs/feed/",                              "topic": "Balkan Politics",    "label": "Danas",                   "enabled": true },
+    { "url": "https://n1info.rs/feed/",                                 "topic": "Balkan Politics",    "label": "N1 Srbija",               "enabled": true },
+
+    { "url": "https://www.juznevesti.com/rss",                          "topic": "Niš News",           "label": "Južne Vesti",             "enabled": true },
+    { "url": "https://niskevesti.rs/feed/",                             "topic": "Niš News",           "label": "Niške Vesti",             "enabled": true },
+    { "url": "https://gradnis.rs/feed/",                                "topic": "Niš News",           "label": "Grad Niš",                "enabled": true }
   ]
 }
