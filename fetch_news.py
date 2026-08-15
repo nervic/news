@@ -9,11 +9,12 @@ import os
 import re
 import time
 import xml.etree.ElementTree as ET
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from urllib.request import urlopen, Request
 from urllib.error import URLError, HTTPError
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urljoin
+from email.utils import parsedate_to_datetime
 
 ROOT          = Path(__file__).parent
 CONFIG_FILE   = ROOT / "config.json"
@@ -49,6 +50,7 @@ TOPIC_COLORS = {
 }
 
 FETCH_TIMEOUT = 12
+MAX_AGE_DAYS  = 21   # drop articles older than this; 0 disables the filter
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (compatible; PersonalNewsDigest/1.0)",
     "Accept": "application/rss+xml, application/xml, text/xml, */*",
@@ -92,6 +94,12 @@ def fetch_rss(url: str, max_items: int) -> list:
         print(f"    ⚠  {url}: {e}")
         return []
 
+    # Guard: some sites serve an HTML page at /feed instead of RSS
+    head = raw[:400].lstrip().lower()
+    if head.startswith(b"<!doctype html") or head.startswith(b"<html"):
+        print(f"    ⚠  {url}: returned HTML, not a feed (no RSS at this URL)")
+        return []
+
     # Try parsing as-is first
     try:
         root = ET.fromstring(raw)
@@ -119,7 +127,7 @@ def fetch_rss(url: str, max_items: int) -> list:
             continue
         articles.append({
             "title":   _clean(title),
-            "link":    link.strip(),
+            "link":    urljoin(url, link.strip()),
             "summary": _clean(content or desc or ""),
             "date":    pub or "",
         })
@@ -138,12 +146,49 @@ def fetch_rss(url: str, max_items: int) -> list:
                 continue
             articles.append({
                 "title":   _clean(title),
-                "link":    link.strip(),
+                "link":    urljoin(url, link.strip()),
                 "summary": _clean(summary),
                 "date":    pub,
             })
 
     return articles
+
+
+
+def _parse_date(s: str):
+    """Best-effort parse of an RSS/Atom date string. Returns aware datetime or None."""
+    if not s:
+        return None
+    s = s.strip()
+    try:
+        d = parsedate_to_datetime(s)
+        if d.tzinfo is None:
+            d = d.replace(tzinfo=timezone.utc)
+        return d
+    except Exception:
+        pass
+    for fmt in ("%Y-%m-%dT%H:%M:%S%z", "%Y-%m-%dT%H:%M:%SZ",
+                "%Y-%m-%dT%H:%M:%S.%f%z", "%Y-%m-%dT%H:%M:%S.%fZ",
+                "%Y-%m-%d %H:%M:%S", "%Y-%m-%d"):
+        try:
+            d = datetime.strptime(s, fmt)
+            if d.tzinfo is None:
+                d = d.replace(tzinfo=timezone.utc)
+            return d
+        except Exception:
+            continue
+    return None
+
+
+def _is_fresh(date_str: str) -> bool:
+    """True if the article is recent enough (or has no parseable date)."""
+    if MAX_AGE_DAYS <= 0:
+        return True
+    d = _parse_date(date_str)
+    if d is None:
+        return True   # unknown date: keep rather than silently drop
+    age = (datetime.now(timezone.utc) - d).days
+    return age <= MAX_AGE_DAYS
 
 
 def _clean(text: str) -> str:
@@ -813,15 +858,35 @@ def main():
 
     for src in enabled:
         domain = urlparse(src["url"]).netloc.replace("www.", "")
-        print(f"  ↓  {src['label']} ({domain})")
-        for a in fetch_rss(src["url"], max_src):
-            key   = a["title"].lower()[:80]
-            if key in seen:
+        topic  = src["topic"]
+        raw_articles = fetch_rss(src["url"], max_src)
+
+        kept = stale = dupe = full = 0
+        for a in raw_articles:
+            if not _is_fresh(a.get("date", "")):
+                stale += 1
                 continue
+            key = a["title"].lower()[:80]
+            if key in seen:
+                dupe += 1
+                continue
+            if topic not in topics_data:
+                continue
+            if len(topics_data[topic]) >= max_top:
+                full += 1
+                continue          # topic full: do NOT burn the fingerprint
             seen.add(key)
-            topic = src["topic"]
-            if topic in topics_data and len(topics_data[topic]) < max_top:
-                topics_data[topic].append(a)
+            topics_data[topic].append(a)
+            kept += 1
+
+        flags = []
+        if stale: flags.append(f"{stale} stale")
+        if dupe:  flags.append(f"{dupe} dup")
+        if full:  flags.append(f"{full} over cap")
+        if not raw_articles: flags.append("NO ITEMS")
+        note = ("  [" + ", ".join(flags) + "]") if flags else ""
+        print(f"  ↓  {src['label']:28} {domain:26} kept {kept}{note}")
+
         time.sleep(0.3)
 
     print(f"\n✅  {len(seen)} unique articles fetched")
